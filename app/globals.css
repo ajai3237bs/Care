@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #163832;
+
+  /* Celedon Brand Palette */
+  --c-950: #051F20;
+  --c-900: #0B2B26;
+  --c-800: #163832;
+  --c-700: #235347;
+  --c-300: #8EB69B;
+  --c-100: #DAF1DE;
+  --c-primary: #6B8F71;
+  --c-terra: #D4956A;
+  --c-cream: #FDF8F3;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-lora);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
