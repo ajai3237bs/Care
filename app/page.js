@@ -9,7 +9,7 @@ const C = {
   300: "#8EB69B",
   100: "#DAF1DE",
   primary: "#6B8F71",
-  terra:   "#D4956A",
+  terra:   "#C8A96A",
   cream:   "#FDF8F3",
 };
 
@@ -29,7 +29,7 @@ function Stars({ n = 5 }) {
   return (
     <div style={{ display: "flex", gap: "2px" }}>
       {Array.from({ length: n }).map((_, i) => (
-        <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#D4956A">
+        <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#C8A96A">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       ))}
@@ -42,113 +42,60 @@ function Stars({ n = 5 }) {
 ═══════════════════════════════════════ */
 function HeroSection() {
   return (
-    <section style={{ background: `linear-gradient(135deg, #051F20 0%, #163832 55%, #235347 100%)`, position: "relative", overflow: "hidden" }}>
-      {/* Decorative blobs */}
-      <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "400px", height: "400px", borderRadius: "50%", backgroundColor: "#235347", opacity: 0.25 }} />
-      <div style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "280px", height: "280px", borderRadius: "50%", backgroundColor: "#8EB69B", opacity: 0.08 }} />
+    <section style={{ backgroundImage: `url('/asset/banner6.png')`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", overflow: "hidden" }}>
+      {/* Dark overlay — solid left, fades right */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,31,32,0.97) 0%, rgba(5,31,32,0.40) 15%, rgba(5,31,32,0.50) 25%, rgba(5,31,32,0.10) 80%)" }} />
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "5rem 1.5rem 4rem" }}>
+      <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", padding: "8rem 1.5rem 4rem" }}>
         <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
 
           {/* Left: Content */}
           <div>
             {/* Badge */}
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", backgroundColor: "rgba(142,182,155,0.15)", border: "1px solid rgba(142,182,155,0.3)", color: "#8EB69B", padding: "0.375rem 1rem", borderRadius: "9999px", fontSize: "0.8rem", fontWeight: "500", marginBottom: "1.5rem" }}>
-              <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#D4956A", display: "inline-block" }} />
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", backgroundColor: "rgba(142,182,155,0.2)", border: "1px solid rgba(142,182,155,0.5)", color: "#DAF1DE", padding: "0.375rem 1rem", borderRadius: "9999px", fontSize: "0.8rem", fontWeight: "600", marginBottom: "1.5rem" }}>
+              <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#C8A96A", display: "inline-block" }} />
               Elder Care Specialists
             </div>
 
             {/* Headline */}
-            <h1 style={{ ...serif, color: "#DAF1DE", fontSize: "clamp(2.2rem,5vw,3.4rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "1.25rem" }}>
+            <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2.2rem,5vw,3.4rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
               Your Parents Deserve the{" "}
-              <span style={{ color: "#D4956A" }}>Best Years</span>
+              <span style={{ color: "#C8A96A" }}>Best Years</span>
               {" "}of Their Life
             </h1>
 
-            <p style={{ color: "#8EB69B", fontSize: "1.05rem", lineHeight: "1.75", marginBottom: "2rem", maxWidth: "480px" }}>
+            <p style={{ color: "rgba(255,255,255,0.92)", fontSize: "1.05rem", lineHeight: "1.75", marginBottom: "2rem", maxWidth: "480px", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}>
               Celedon brings expert elder care, 24/7 support, and warm companionship — right to their doorstep. Because home is where healing happens.
             </p>
 
             {/* CTAs */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <Link href="/plans" style={{ backgroundColor: "#D4956A", color: "#fff", padding: "0.875rem 1.875rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "600", display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(212,149,106,0.35)" }}>
+              <Link href="/plans" style={{ backgroundColor: "#C8A96A", color: "#fff", padding: "0.875rem 1.875rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "600", display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(212,149,106,0.45)" }}>
                 Explore Plans
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
-              <Link href="/contact" style={{ color: "#DAF1DE", border: "1px solid rgba(218,241,222,0.35)", padding: "0.875rem 1.875rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "500", display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}>
+              <Link href="/contact" style={{ color: "#ffffff", border: "1px solid rgba(255,255,255,0.6)", padding: "0.875rem 1.875rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "500", display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}>
                 Talk to Us
               </Link>
             </div>
 
             {/* Stat strip */}
-            <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.2)" }}>
               {[
                 { n: "10,000+", l: "Families Served" },
                 { n: "30+",     l: "Years Expertise" },
                 { n: "24/7",    l: "Emergency Support" },
               ].map(({ n, l }) => (
                 <div key={l}>
-                  <p style={{ ...serif, color: "#D4956A", fontSize: "1.6rem", fontWeight: "700", lineHeight: 1 }}>{n}</p>
-                  <p style={{ color: "#8EB69B", fontSize: "0.75rem", marginTop: "0.25rem" }}>{l}</p>
+                  <p style={{ ...serif, color: "#C8A96A", fontSize: "1.6rem", fontWeight: "700", lineHeight: 1 }}>{n}</p>
+                  <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.75rem", marginTop: "0.25rem" }}>{l}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right: Visual card */}
-          <div style={{ position: "relative", display: "flex", justifyContent: "flex-end" }}>
-            <div style={{ width: "100%", maxWidth: "380px", height: "480px", backgroundColor: "#163832", borderRadius: "24px", position: "relative", overflow: "hidden", boxShadow: "0 25px 60px rgba(0,0,0,0.5)" }}>
-              {/* Background shapes */}
-              <div style={{ position: "absolute", top: "-60px", right: "-60px", width: "240px", height: "240px", borderRadius: "50%", backgroundColor: "#D4956A", opacity: 0.18 }} />
-              <div style={{ position: "absolute", bottom: "-40px", left: "-40px", width: "180px", height: "180px", borderRadius: "50%", backgroundColor: "#8EB69B", opacity: 0.15 }} />
-              <div style={{ position: "absolute", top: "30%", left: "10%", width: "120px", height: "120px", borderRadius: "50%", backgroundColor: "#235347", opacity: 0.5 }} />
-
-              {/* Centre illustration */}
-              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
-                  <circle cx="60" cy="50" r="20" fill="#8EB69B" opacity="0.55" />
-                  <path d="M38 120 C38 90 82 90 82 120" stroke="#8EB69B" strokeWidth="3" fill="none" opacity="0.5" strokeLinecap="round" />
-                  <circle cx="105" cy="55" r="16" fill="#D4956A" opacity="0.55" />
-                  <path d="M87 120 C87 95 123 95 123 120" stroke="#D4956A" strokeWidth="3" fill="none" opacity="0.5" strokeLinecap="round" />
-                  <path d="M80 90 C80 90 65 76 65 68 C65 61 72 57 80 68 C88 57 95 61 95 68 C95 76 80 90 80 90Z" fill="#D4956A" opacity="0.9" />
-                  <path d="M80 112 L65 102" stroke="#DAF1DE" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
-                  <path d="M80 112 L95 102" stroke="#DAF1DE" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
-                  <circle cx="30" cy="35" r="4" fill="#DAF1DE" opacity="0.25" />
-                  <circle cx="140" cy="130" r="6" fill="#DAF1DE" opacity="0.15" />
-                  <circle cx="145" cy="45" r="3" fill="#D4956A" opacity="0.35" />
-                </svg>
-              </div>
-
-              {/* Badge top-left */}
-              <div style={{ position: "absolute", top: "16px", left: "16px", backgroundColor: "rgba(5,31,32,0.82)", backdropFilter: "blur(8px)", borderRadius: "12px", padding: "0.5rem 0.875rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#D4956A", display: "inline-block" }} />
-                  <span style={{ color: "#DAF1DE", fontSize: "0.75rem", fontWeight: "500" }}>Personalised Care</span>
-                </div>
-              </div>
-
-              {/* Badge top-right */}
-              <div style={{ position: "absolute", top: "60px", right: "16px", backgroundColor: "rgba(5,31,32,0.82)", backdropFilter: "blur(8px)", borderRadius: "12px", padding: "0.5rem 0.875rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#8EB69B", display: "inline-block" }} />
-                  <span style={{ color: "#DAF1DE", fontSize: "0.75rem", fontWeight: "500" }}>Supportive &amp; Reliable</span>
-                </div>
-              </div>
-
-              {/* Satisfaction card */}
-              <div style={{ position: "absolute", bottom: "16px", left: "16px", right: "16px", backgroundColor: "rgba(255,255,255,0.96)", borderRadius: "16px", padding: "1rem 1.125rem", boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}>
-                <p style={{ color: "#163832", fontSize: "0.7rem", fontWeight: "500", opacity: 0.6, marginBottom: "0.25rem" }}>Client Satisfaction Rate</p>
-                <p style={{ ...serif, color: "#051F20", fontSize: "2.5rem", fontWeight: "700", lineHeight: 1 }}>96%</p>
-                <p style={{ color: "#235347", fontSize: "0.75rem", marginTop: "0.25rem" }}>Clearer focus, less worry, lasting care.</p>
-              </div>
-            </div>
-
-            {/* Floating pill */}
-            <div style={{ position: "absolute", bottom: "-16px", left: "0", backgroundColor: "#D4956A", color: "#fff", borderRadius: "14px", padding: "0.625rem 1rem", boxShadow: "0 8px 20px rgba(212,149,106,0.4)" }}>
-              <p style={{ fontSize: "0.7rem", fontWeight: "500" }}>Verified Caregivers</p>
-              <p style={{ ...serif, fontSize: "1.25rem", fontWeight: "700" }}>500+</p>
-            </div>
-          </div>
+          
         </div>
       </div>
 
@@ -224,7 +171,7 @@ function ChallengesSection() {
     <section style={{ backgroundColor: "#fff", padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={{ color: "#D4956A", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>The Problem We Solve</p>
+          <p style={{ color: "#C8A96A", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>The Problem We Solve</p>
           <h2 style={{ ...serif, color: "#051F20", fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700", lineHeight: 1.25 }}>
             Aging Brings New Challenges.<br />We Help You Face Them Together.
           </h2>
@@ -329,7 +276,7 @@ function WhyChooseSection() {
 
           {/* Left */}
           <div>
-            <p style={{ color: "#D4956A", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Why Choose Us</p>
+            <p style={{ color: "#C8A96A", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Why Choose Us</p>
             <h2 style={{ ...serif, color: "#DAF1DE", fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700", marginBottom: "0.75rem" }}>
               The Celedon Difference
             </h2>
@@ -358,12 +305,12 @@ function WhyChooseSection() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
             {statsGrid.map(({ n, l }) => (
               <div key={l} style={{ backgroundColor: "#163832", borderRadius: "18px", padding: "1.75rem", textAlign: "center", border: "1px solid #235347" }}>
-                <p style={{ ...serif, color: "#D4956A", fontSize: "2.2rem", fontWeight: "700" }}>{n}</p>
+                <p style={{ ...serif, color: "#C8A96A", fontSize: "2.2rem", fontWeight: "700" }}>{n}</p>
                 <p style={{ color: "#8EB69B", fontSize: "0.8rem", marginTop: "0.375rem" }}>{l}</p>
               </div>
             ))}
             <div style={{ gridColumn: "1 / -1", backgroundColor: "#163832", borderRadius: "18px", padding: "1.5rem", border: "1px solid #235347", display: "flex", alignItems: "center", gap: "1rem" }}>
-              <div style={{ flexShrink: 0, width: "48px", height: "48px", borderRadius: "50%", backgroundColor: "rgba(212,149,106,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D4956A" }}>
+              <div style={{ flexShrink: 0, width: "48px", height: "48px", borderRadius: "50%", backgroundColor: "rgba(212,149,106,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#C8A96A" }}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" strokeLinecap="round" /></svg>
               </div>
               <div>
@@ -448,7 +395,7 @@ function TestimonialsSection() {
 function CTABanner() {
   return (
     <section style={{ background: "linear-gradient(135deg, #163832 0%, #6B8F71 100%)", padding: "5rem 1.5rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", top: "-60px", right: "-60px", width: "220px", height: "220px", borderRadius: "50%", backgroundColor: "#D4956A", opacity: 0.12 }} />
+      <div style={{ position: "absolute", top: "-60px", right: "-60px", width: "220px", height: "220px", borderRadius: "50%", backgroundColor: "#C8A96A", opacity: 0.12 }} />
       <div style={{ position: "absolute", bottom: "-40px", left: "-40px", width: "160px", height: "160px", borderRadius: "50%", backgroundColor: "#DAF1DE", opacity: 0.08 }} />
 
       <div style={{ position: "relative", maxWidth: "640px", margin: "0 auto" }}>
@@ -462,7 +409,7 @@ function CTABanner() {
           Join 10,000+ Indian families who trust Celedon to care for the people they love most.
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-          <Link href="/plans" style={{ backgroundColor: "#D4956A", color: "#fff", padding: "1rem 2.25rem", borderRadius: "9999px", fontSize: "1rem", fontWeight: "700", textDecoration: "none", boxShadow: "0 6px 24px rgba(212,149,106,0.4)", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+          <Link href="/plans" style={{ backgroundColor: "#C8A96A", color: "#fff", padding: "1rem 2.25rem", borderRadius: "9999px", fontSize: "1rem", fontWeight: "700", textDecoration: "none", boxShadow: "0 6px 24px rgba(212,149,106,0.4)", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
             View Membership Plans
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>

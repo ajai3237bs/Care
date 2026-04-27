@@ -44,8 +44,13 @@ export default function Header() {
 
   return (
     <header
-      style={{ backgroundColor: "#0B2B26" }}
-      className="sticky top-0 z-50 shadow-xl"
+      style={{
+        backgroundColor: "rgba(11,43,38,0.55)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        borderBottom: "1px  rgba(142,182,155,0.15)",
+      }}
+      className="fixed top-0 left-0 right-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between" style={{ height: "72px" }}>
@@ -92,7 +97,7 @@ export default function Header() {
             <Link
               href="/plans"
               style={{
-                backgroundColor: "#D4956A",
+                backgroundColor: "#C8A96A",
                 color: "#ffffff",
                 padding: "0.625rem 1.5rem",
                 borderRadius: "9999px",
@@ -170,7 +175,7 @@ export default function Header() {
                   display: "block",
                   textAlign: "center",
                   padding: "0.75rem",
-                  backgroundColor: "#D4956A",
+                  backgroundColor: "#C8A96A",
                   borderRadius: "9999px",
                   color: "#ffffff",
                   fontSize: "0.875rem",
