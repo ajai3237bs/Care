@@ -1,6 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+
+const C = {
+  950: "#051F20",
+  900: "#0B2B26",
+  800: "#163832",
+  700: "#1D4F42",
+  300: "#8EB69B",
+  100: "#DAF1DE",
+  terra: "#C8A96A",
+  cream: "#F5F0E8",
+};
+
+function LeafLogo({ size = 36 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 34 34" fill="none">
+      <path
+        d="M17 3C17 3 5 10 5 21C5 27.6 10.4 33 17 33C23.6 33 29 27.6 29 21C29 10 17 3 17 3Z"
+        fill="#8EB69B"
+      />
+      <path d="M17 33V17" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M17 23L12 18" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M17 23L22 18" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -8,176 +34,214 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [focusedField, setFocusedField] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
     }
-
     setLoading(true);
-    // Simulate API call
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     setError("Invalid credentials. Please try again.");
   };
 
-  return (
-    <div className="min-h-screen flex font-sans">
-      {/* Left Panel */}
-      <div className="hidden lg:flex lg:w-1/2 relative bg-[#0a0a0f] overflow-hidden flex-col justify-between p-14">
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #a78bfa 1px, transparent 1px),
-              linear-gradient(to bottom, #a78bfa 1px, transparent 1px)
-            `,
-            backgroundSize: "48px 48px",
-          }}
-        />
+  const inputStyle = (field) => ({
+    width: "100%",
+    padding: "0.8rem 1rem",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    border: `1px solid ${focusedField === field ? C[300] : "rgba(142,182,155,0.2)"}`,
+    borderRadius: "0.75rem",
+    color: C[100],
+    fontSize: "0.9rem",
+    fontFamily: "var(--font-dm-sans)",
+    outline: "none",
+    transition: "border-color 0.2s",
+    boxSizing: "border-box",
+  });
 
-        {/* Glow orb */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-violet-600 opacity-20 blur-[100px] pointer-events-none" />
+  return (
+    <div style={{ minHeight: "100vh", display: "flex", backgroundColor: C[950] }}>
+      {/* Left Panel — brand/quote, desktop only */}
+      <div
+        className="hidden lg:flex"
+        style={{
+          width: "44%",
+          flexShrink: 0,
+          backgroundColor: C[950],
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: "5rem 3.5rem 3rem",
+          position: "relative",
+          overflow: "hidden",
+          borderRight: "1px solid rgba(142,182,155,0.1)",
+        }}
+      >
+        {/* Background glows */}
+        <div style={{
+          position: "absolute",
+          top: "30%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "480px",
+          height: "480px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(142,182,155,0.08) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+        <div style={{
+          position: "absolute",
+          bottom: "10%",
+          right: "-10%",
+          width: "300px",
+          height: "300px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(200,169,106,0.06) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
 
         {/* Logo */}
-        <div className="relative z-10">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-violet-500 flex items-center justify-center shadow-lg shadow-violet-500/40">
-              <svg
-                className="w-5 h-5 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
-            <span className="text-white font-semibold tracking-tight text-lg">
-              Luminary
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Link
+            href="/"
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.625rem", textDecoration: "none" }}
+          >
+            <LeafLogo size={36} />
+            <span style={{
+              fontFamily: "var(--font-lora)",
+              color: C[100],
+              fontSize: "1.375rem",
+              fontWeight: "700",
+              letterSpacing: "0.03em",
+            }}>
+              Celedon
             </span>
+          </Link>
+        </div>
+
+        {/* Quote & stats */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div style={{
+            width: "2.5rem",
+            height: "2px",
+            backgroundColor: C.terra,
+            marginBottom: "1.75rem",
+          }} />
+          <blockquote style={{
+            fontFamily: "var(--font-lora)",
+            fontSize: "1.875rem",
+            fontWeight: "400",
+            fontStyle: "italic",
+            color: C[100],
+            lineHeight: "1.45",
+            marginBottom: "1.25rem",
+          }}>
+            "Because every parent deserves to feel{" "}
+            <span style={{ color: C.terra }}>seen, safe,</span> and deeply loved."
+          </blockquote>
+          <p style={{ color: C[300], fontSize: "0.875rem", lineHeight: "1.7", marginBottom: "2.5rem" }}>
+            Join thousands of families who trust Celedon to care for their loved ones — every single day.
+          </p>
+
+          {/* Stats */}
+          <div style={{ display: "flex", gap: "2.5rem" }}>
+            {[
+              { num: "10,000+", label: "Families served" },
+              { num: "24/7", label: "Support" },
+              { num: "5★", label: "Avg. rating" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div style={{
+                  fontFamily: "var(--font-lora)",
+                  fontSize: "1.5rem",
+                  fontWeight: "700",
+                  color: C.terra,
+                }}>
+                  {s.num}
+                </div>
+                <div style={{ fontSize: "0.75rem", color: C[300], marginTop: "0.15rem", opacity: 0.8 }}>
+                  {s.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Center quote */}
-        <div className="relative z-10">
-          <blockquote className="text-4xl font-light text-white leading-[1.2] tracking-tight">
-            &ldquo;The tools you use{" "}
-            <span className="text-violet-400 italic">shape</span> the work you
-            create.&rdquo;
-          </blockquote>
-          <p className="mt-6 text-zinc-500 text-sm">
-            Sign in to access your workspace and continue building.
-          </p>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="relative z-10 flex items-center justify-between text-zinc-600 text-xs">
-          <span>© 2026 Luminary Inc.</span>
-          <span>v2.4.1</span>
+        {/* Footer */}
+        <div style={{ position: "relative", zIndex: 1, fontSize: "0.75rem", color: C[300], opacity: 0.4 }}>
+          © 2026 Celedon Elder Care
         </div>
       </div>
 
-      {/* Right Panel */}
-      <div className="flex-1 flex items-center justify-center bg-[#f7f6f3] px-6 py-12">
-        <div className="w-full max-w-md">
+      {/* Right Panel — form */}
+      <div style={{
+        flex: 1,
+        backgroundColor: C[900],
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "5.5rem 2rem 2.5rem",
+      }}>
+        <div style={{ width: "100%", maxWidth: "420px" }}>
+
           {/* Mobile logo */}
-          <div className="flex items-center gap-2 mb-10 lg:hidden">
-            <div className="w-8 h-8 rounded-lg bg-violet-500 flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
-            <span className="font-semibold text-zinc-900 tracking-tight">
-              Luminary
-            </span>
+          <div className="lg:hidden" style={{ marginBottom: "2.5rem" }}>
+            <Link
+              href="/"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
+            >
+              <LeafLogo size={30} />
+              <span style={{ fontFamily: "var(--font-lora)", color: C[100], fontSize: "1.2rem", fontWeight: "700" }}>
+                Celedon
+              </span>
+            </Link>
           </div>
 
           {/* Heading */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-semibold text-zinc-900 tracking-tight">
+          <div style={{ marginBottom: "2rem" }}>
+            <h1 style={{
+              fontFamily: "var(--font-lora)",
+              fontSize: "2rem",
+              fontWeight: "700",
+              color: C[100],
+              marginBottom: "0.5rem",
+              lineHeight: "1.2",
+            }}>
               Welcome back
             </h1>
-            <p className="mt-2 text-zinc-500 text-sm">
+            <p style={{ color: C[300], fontSize: "0.875rem" }}>
               Don&apos;t have an account?{" "}
-              <a
-                href="#"
-                className="text-violet-600 hover:text-violet-700 font-medium transition-colors"
+              <Link
+                href="/authentication/register"
+                style={{ color: C.terra, fontWeight: "600", textDecoration: "none" }}
               >
-                Sign up free
-              </a>
+                Create one
+              </Link>
             </p>
           </div>
 
-          {/* Social login */}
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            <button className="flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-zinc-700 text-sm font-medium hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
-                <path
-                  fill="#4285F4"
-                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                />
-                <path
-                  fill="#34A853"
-                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                />
-                <path
-                  fill="#FBBC05"
-                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                />
-                <path
-                  fill="#EA4335"
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                />
-              </svg>
-              Google
-            </button>
-            <button className="flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-zinc-700 text-sm font-medium hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
-              <svg
-                className="w-4 h-4 text-zinc-900"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.492.998.108-.776.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.298 24 12c0-6.627-5.373-12-12-12" />
-              </svg>
-              GitHub
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="relative mb-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-zinc-200" />
-            </div>
-            <div className="relative flex justify-center text-xs">
-              <span className="bg-[#f7f6f3] px-3 text-zinc-400 uppercase tracking-widest">
-                or
-              </span>
-            </div>
-          </div>
-
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Error */}
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+
+            {/* Error banner */}
             {error && (
-              <div className="flex items-center gap-2.5 px-4 py-3 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm">
-                <svg
-                  className="w-4 h-4 shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                    clipRule="evenodd"
-                  />
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.625rem",
+                padding: "0.875rem 1rem",
+                backgroundColor: "rgba(239,68,68,0.08)",
+                border: "1px solid rgba(239,68,68,0.2)",
+                borderRadius: "0.75rem",
+                color: "#FCA5A5",
+                fontSize: "0.85rem",
+                fontFamily: "var(--font-dm-sans)",
+              }}>
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style={{ flexShrink: 0 }}>
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
                 {error}
               </div>
@@ -185,77 +249,82 @@ export default function LoginPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-xs font-medium text-zinc-600 mb-1.5 uppercase tracking-wider">
-                Email
+              <label style={{
+                display: "block",
+                fontSize: "0.7rem",
+                fontWeight: "600",
+                color: C[300],
+                marginBottom: "0.5rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                fontFamily: "var(--font-dm-sans)",
+              }}>
+                Email Address
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-xl text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-400 transition-all shadow-sm"
+                placeholder="your@email.com"
+                style={inputStyle("email")}
+                onFocus={() => setFocusedField("email")}
+                onBlur={() => setFocusedField(null)}
               />
             </div>
 
             {/* Password */}
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-medium text-zinc-600 uppercase tracking-wider">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+                <label style={{
+                  fontSize: "0.7rem",
+                  fontWeight: "600",
+                  color: C[300],
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  fontFamily: "var(--font-dm-sans)",
+                }}>
                   Password
                 </label>
-                <a
-                  href="#"
-                  className="text-xs text-violet-600 hover:text-violet-700 transition-colors font-medium"
-                >
+                <Link href="#" style={{ fontSize: "0.75rem", color: C.terra, textDecoration: "none", fontFamily: "var(--font-dm-sans)" }}>
                   Forgot password?
-                </a>
+                </Link>
               </div>
-              <div className="relative">
+              <div style={{ position: "relative" }}>
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-xl text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-400 transition-all shadow-sm pr-11"
+                  style={{ ...inputStyle("password"), paddingRight: "3rem" }}
+                  onFocus={() => setFocusedField("password")}
+                  onBlur={() => setFocusedField(null)}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 transition-colors"
+                  style={{
+                    position: "absolute",
+                    right: "0.875rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    color: C[300],
+                    cursor: "pointer",
+                    padding: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    opacity: 0.7,
+                  }}
                 >
                   {showPassword ? (
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                      />
+                    <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                     </svg>
                   ) : (
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                      />
+                    <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
                   )}
                 </button>
@@ -263,16 +332,19 @@ export default function LoginPage() {
             </div>
 
             {/* Remember me */}
-            <div className="flex items-center gap-2.5">
+            <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
               <input
                 type="checkbox"
                 id="remember"
-                className="w-4 h-4 rounded border-zinc-300 text-violet-600 focus:ring-violet-500 cursor-pointer accent-violet-600"
+                style={{ width: "1rem", height: "1rem", accentColor: C.terra, cursor: "pointer", flexShrink: 0 }}
               />
-              <label
-                htmlFor="remember"
-                className="text-sm text-zinc-500 cursor-pointer select-none"
-              >
+              <label htmlFor="remember" style={{
+                fontSize: "0.85rem",
+                color: C[300],
+                cursor: "pointer",
+                fontFamily: "var(--font-dm-sans)",
+                opacity: 0.85,
+              }}>
                 Keep me signed in for 30 days
               </label>
             </div>
@@ -281,48 +353,58 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-3 px-4 bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white font-medium text-sm rounded-xl transition-all shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              style={{
+                width: "100%",
+                padding: "0.9rem",
+                backgroundColor: loading ? "rgba(200,169,106,0.45)" : C.terra,
+                color: "#fff",
+                border: "none",
+                borderRadius: "9999px",
+                fontSize: "0.9rem",
+                fontWeight: "600",
+                fontFamily: "var(--font-dm-sans)",
+                cursor: loading ? "not-allowed" : "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+                transition: "background-color 0.2s",
+                marginTop: "0.25rem",
+                letterSpacing: "0.01em",
+              }}
             >
               {loading ? (
                 <>
-                  <svg
-                    className="w-4 h-4 animate-spin"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                    />
+                  <svg className="animate-spin" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                    <circle opacity="0.25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path opacity="0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
                   Signing in…
                 </>
               ) : (
-                "Sign in"
+                <>
+                  Sign In
+                  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </>
               )}
             </button>
           </form>
 
           {/* Footer */}
-          <p className="mt-8 text-center text-xs text-zinc-400">
+          <p style={{
+            marginTop: "2rem",
+            textAlign: "center",
+            fontSize: "0.75rem",
+            color: "rgba(142,182,155,0.45)",
+            fontFamily: "var(--font-dm-sans)",
+            lineHeight: "1.6",
+          }}>
             By signing in, you agree to our{" "}
-            <a href="#" className="hover:text-zinc-600 transition-colors underline underline-offset-2">
-              Terms of Service
-            </a>{" "}
+            <a href="#" style={{ color: C[300], textDecoration: "underline", opacity: 0.7 }}>Terms of Service</a>{" "}
             and{" "}
-            <a href="#" className="hover:text-zinc-600 transition-colors underline underline-offset-2">
-              Privacy Policy
-            </a>
-            .
+            <a href="#" style={{ color: C[300], textDecoration: "underline", opacity: 0.7 }}>Privacy Policy</a>.
           </p>
         </div>
       </div>

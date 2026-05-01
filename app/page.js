@@ -84,8 +84,8 @@ function HeroSection() {
             <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.2)" }}>
               {[
                 { n: "10,000+", l: "Families Served" },
-                { n: "30+", l: "Years Expertise" },
-                { n: "24/7", l: "Emergency Support" },
+                { n: "30+",     l: "Years Expertise" },
+                { n: "24/7",    l: "Emergency Support" },
               ].map(({ n, l }) => (
                 <div key={l}>
                   <p style={{ ...serif, color: "#C8A96A", fontSize: "1.6rem", fontWeight: "700", lineHeight: 1 }}>{n}</p>
