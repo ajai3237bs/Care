@@ -42,11 +42,11 @@ function Stars({ n = 5 }) {
 ═══════════════════════════════════════ */
 function HeroSection() {
   return (
-    <section style={{ backgroundImage: `url('/asset/banner4.png')`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", overflow: "hidden" }}>
+    <section style={{ backgroundImage: `url('/asset/banner4.png')`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "center" }}>
       {/* Dark overlay — solid left, fades right */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,31,32,0.97) 0%, rgba(5,31,32,0.40) 15%, rgba(5,31,32,0.50) 25%, rgba(5,31,32,0.10) 80%)" }} />
 
-      <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", padding: "8rem 1.5rem 4rem" }}>
+      <div style={{ position: "relative", width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "8rem 1.5rem 4rem" }}>
         <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
 
           {/* Left: Content */}
@@ -58,7 +58,7 @@ function HeroSection() {
             </div>
 
             {/* Headline */}
-            <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2.2rem,5vw,3.4rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
+            <h1 style={{ fontFamily: "var(--font-inter)", fontWeight: "400", color: "#ffffff", fontSize: "clamp(2.2rem,5vw,3.4rem)", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
               Give Your Loved Ones{" "}
               <span style={{ color: "#C8A96A" }}>The Care</span>
               {" "}They Truly Deserve
