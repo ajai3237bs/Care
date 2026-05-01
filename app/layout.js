@@ -1,4 +1,4 @@
-import { Lora, DM_Sans, Inter } from "next/font/google";
+import { Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,13 +15,6 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-});
-
 export const metadata = {
   title: "Celedon Elder Care — Care That Comes Home",
   description:
@@ -30,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${lora.variable} ${dmSans.variable} ${inter.variable}`}>
+    <html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
