@@ -11,8 +11,8 @@ const C = {
   300: "#8EB69B",
   100: "#DAF1DE",
   primary: "#6B8F71",
-  terra:   "#C8A96A",
-  cream:   "#FDF8F3",
+  terra: "#C8A96A",
+  cream: "#FDF8F3",
 };
 
 const serif = { fontFamily: "var(--font-lora)" };
@@ -44,16 +44,16 @@ function AboutHero() {
 
         <ScrollReveal animation="fadeUp" delay={120} duration={750}>
           <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2rem,5vw,3.2rem)", fontWeight: "700", lineHeight: "1.2", maxWidth: "640px", marginBottom: "1.25rem", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
-            We Started Celedon Because{" "}
-            <span style={{ color: C.terra }}>We've Been in Your Shoes</span>
+            Supporting every generation with care{" "}
+            <span style={{ color: C.terra }}>Comfort and Dignity</span>
           </h1>
         </ScrollReveal>
 
-        <ScrollReveal animation="fadeUp" delay={260} duration={750}>
+        {/* <ScrollReveal animation="fadeUp" delay={260} duration={750}>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", lineHeight: "1.8", maxWidth: "520px", textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}>
             Like you, we've worried about a parent alone at home. That worry became our purpose.
           </p>
-        </ScrollReveal>
+        </ScrollReveal> */}
       </div>
     </section>
   );
@@ -186,11 +186,11 @@ function MissionVision() {
    SECTION 4 — VALUES
 ═══════════════════════════════════════ */
 const values = [
-  { emoji: "💚", title: "People over process",       desc: "Every senior is a person, not a case file. We treat them as we'd treat our own family." },
-  { emoji: "🏠", title: "Home is sacred",             desc: "Care should never feel institutional. Comfort, familiarity, and warmth matter as much as medicine." },
-  { emoji: "🤝", title: "Family stays in the loop",  desc: "No parent should feel alone. No child should feel helpless. We keep everyone connected." },
-  { emoji: "📈", title: "Always improving",           desc: "We're a startup and we learn fast. Every family we serve makes us sharper and more thoughtful." },
-  { emoji: "❤️", title: "Empathy first",              desc: "Every decision starts with one question: how does this feel for the senior?" },
+  { emoji: "💚", title: "People over process", desc: "Every senior is a person, not a case file. We treat them as we'd treat our own family." },
+  { emoji: "🏠", title: "Home is sacred", desc: "Care should never feel institutional. Comfort, familiarity, and warmth matter as much as medicine." },
+  { emoji: "🤝", title: "Family stays in the loop", desc: "No parent should feel alone. No child should feel helpless. We keep everyone connected." },
+  { emoji: "📈", title: "Always improving", desc: "We're a startup and we learn fast. Every family we serve makes us sharper and more thoughtful." },
+  { emoji: "❤️", title: "Empathy first", desc: "Every decision starts with one question: how does this feel for the senior?" },
 ];
 
 function ValuesSection() {
@@ -316,8 +316,8 @@ function TodaySection() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {[
               { icon: "📍", label: "Serving families across India", sub: "And expanding every month" },
-              { icon: "⭐", label: "96% member satisfaction",       sub: "Based on direct family feedback" },
-              { icon: "🚀", label: "Launched in 2024",              sub: "Fresh eyes on an old problem" },
+              { icon: "⭐", label: "96% member satisfaction", sub: "Based on direct family feedback" },
+              { icon: "🚀", label: "Launched in 2024", sub: "Fresh eyes on an old problem" },
             ].map(({ icon, label, sub }, i) => (
               <ScrollReveal key={label} animation="fadeRight" delay={i * 110} duration={650}>
                 <div style={{ backgroundColor: C[800], borderRadius: "16px", padding: "1.25rem 1.5rem", border: "1px solid rgba(142,182,155,0.12)", display: "flex", alignItems: "center", gap: "1rem" }}>

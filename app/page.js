@@ -9,8 +9,8 @@ const C = {
   300: "#8EB69B",
   100: "#DAF1DE",
   primary: "#6B8F71",
-  terra:   "#C8A96A",
-  cream:   "#FDF8F3",
+  terra: "#C8A96A",
+  cream: "#FDF8F3",
 };
 
 const serif = { fontFamily: "var(--font-lora)" };
@@ -42,7 +42,7 @@ function Stars({ n = 5 }) {
 ═══════════════════════════════════════ */
 function HeroSection() {
   return (
-    <section style={{ backgroundImage: `url('/asset/banner6.png')`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", overflow: "hidden" }}>
+    <section style={{ backgroundImage: `url('/asset/banner4.png')`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", overflow: "hidden" }}>
       {/* Dark overlay — solid left, fades right */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,31,32,0.97) 0%, rgba(5,31,32,0.40) 15%, rgba(5,31,32,0.50) 25%, rgba(5,31,32,0.10) 80%)" }} />
 
@@ -59,18 +59,19 @@ function HeroSection() {
 
             {/* Headline */}
             <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2.2rem,5vw,3.4rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
-              Your Parents Deserve the{" "}
-              <span style={{ color: "#C8A96A" }}>Best Years</span>
-              {" "}of Their Life
+              Give Your Loved Ones{" "}
+              <span style={{ color: "#C8A96A" }}>The Care</span>
+              {" "}They Truly Deserve
             </h1>
 
+            {/* <p style={{ color: "rgba(255,255,255,0.92)", fontSize: "1.05rem", lineHeight: "1.75", marginBottom: "2rem", maxWidth: "480px", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}>
+              Personalized elder care and postpartum support delivered with compassion, right at home in Kerala.</p>
             <p style={{ color: "rgba(255,255,255,0.92)", fontSize: "1.05rem", lineHeight: "1.75", marginBottom: "2rem", maxWidth: "480px", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}>
-              Celedon brings expert elder care, 24/7 support, and warm companionship — right to their doorstep. Because home is where healing happens.
-            </p>
+              From daily assistance to medical monitoring, we ensure safety, comfort, and peace of mind for both families and NRIs</p> */}
 
             {/* CTAs */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <Link href="/plans" style={{ backgroundColor: "#C8A96A", color: "#fff", padding: "0.875rem 1.875rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "600", display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(212,149,106,0.45)" }}>
+              <Link href="/plans" style={{ backgroundColor: "#D4A373", color: "#fff", padding: "0.875rem 1.875rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "600", display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(212,149,106,0.45)" }}>
                 Explore Plans
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
@@ -83,8 +84,8 @@ function HeroSection() {
             <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.2)" }}>
               {[
                 { n: "10,000+", l: "Families Served" },
-                { n: "30+",     l: "Years Expertise" },
-                { n: "24/7",    l: "Emergency Support" },
+                { n: "30+", l: "Years Expertise" },
+                { n: "24/7", l: "Emergency Support" },
               ].map(({ n, l }) => (
                 <div key={l}>
                   <p style={{ ...serif, color: "#C8A96A", fontSize: "1.6rem", fontWeight: "700", lineHeight: 1 }}>{n}</p>
@@ -95,7 +96,7 @@ function HeroSection() {
           </div>
 
           {/* Right: Visual card */}
-          
+
         </div>
       </div>
 
@@ -112,10 +113,10 @@ function HeroSection() {
    SECTION 2 — TRUST BAR
 ═══════════════════════════════════════ */
 const trustPillars = [
-  { label: "Home Care",         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg> },
-  { label: "Medical Support",   icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg> },
-  { label: "Wellness",          icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg> },
-  { label: "24/7 Emergency",    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg> },
+  { label: "Home Care", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg> },
+  { label: "Medical Support", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg> },
+  { label: "Wellness", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg> },
+  { label: "24/7 Emergency", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg> },
   { label: "Geriatric Experts", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg> },
 ];
 
@@ -264,8 +265,8 @@ const whyPoints = [
 const statsGrid = [
   { n: "10K+", l: "Families Served" },
   { n: "500+", l: "Verified Caregivers" },
-  { n: "15+",  l: "Cities Covered" },
-  { n: "96%",  l: "Satisfaction Rate" },
+  { n: "15+", l: "Cities Covered" },
+  { n: "96%", l: "Satisfaction Rate" },
 ];
 
 function WhyChooseSection() {
