@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 /* ─── Design Tokens ─── */
 const C = {
@@ -370,6 +372,8 @@ export default function ContactPage() {
       <ContactForm />
       <ReachSection />
       <ContactCTA />
+      <Footer />
+      <Header />
     </>
   );
 }

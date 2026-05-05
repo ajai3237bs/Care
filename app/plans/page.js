@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 /* ─── Design Tokens ─── */
 const C = {
@@ -257,16 +259,16 @@ function PlanCards() {
 ═══════════════════════════════════════ */
 const tableRows = [
   { feature: "24/7 Emergency Helpline", silver: "✅", gold: "✅", platinum: "✅ Priority" },
-  { feature: "Health Vitals Check",     silver: "1× / month", gold: "2× / month", platinum: "4× / month" },
-  { feature: "Tele-consultations",      silver: "2 / month", gold: "5 / month", platinum: "Unlimited" },
-  { feature: "Home Nursing Visit",      silver: "—", gold: "2× / month", platinum: "4× / month" },
-  { feature: "Hospital Accompaniment",  silver: "Add-on", gold: "1 / month", platinum: "3 / month" },
-  { feature: "Wellness & Activities",   silver: "Standard", gold: "Standard", platinum: "Premium" },
-  { feature: "Family Health Reports",   silver: "Monthly", gold: "Bi-monthly", platinum: "Weekly" },
-  { feature: "Dedicated Care Manager",  silver: "—", gold: "—", platinum: "✅" },
-  { feature: "Lab & Diagnostics",       silver: "Add-on", gold: "Add-on", platinum: "1 free / quarter" },
-  { feature: "Ambulance Support",       silver: "Standard", gold: "Priority", platinum: "Priority + Liaison" },
-  { feature: "Member App Access",       silver: "✅", gold: "✅", platinum: "✅" },
+  { feature: "Health Vitals Check", silver: "1× / month", gold: "2× / month", platinum: "4× / month" },
+  { feature: "Tele-consultations", silver: "2 / month", gold: "5 / month", platinum: "Unlimited" },
+  { feature: "Home Nursing Visit", silver: "—", gold: "2× / month", platinum: "4× / month" },
+  { feature: "Hospital Accompaniment", silver: "Add-on", gold: "1 / month", platinum: "3 / month" },
+  { feature: "Wellness & Activities", silver: "Standard", gold: "Standard", platinum: "Premium" },
+  { feature: "Family Health Reports", silver: "Monthly", gold: "Bi-monthly", platinum: "Weekly" },
+  { feature: "Dedicated Care Manager", silver: "—", gold: "—", platinum: "✅" },
+  { feature: "Lab & Diagnostics", silver: "Add-on", gold: "Add-on", platinum: "1 free / quarter" },
+  { feature: "Ambulance Support", silver: "Standard", gold: "Priority", platinum: "Priority + Liaison" },
+  { feature: "Member App Access", silver: "✅", gold: "✅", platinum: "✅" },
 ];
 
 function ComparisonTable() {
@@ -324,14 +326,14 @@ function ComparisonTable() {
    SECTION 5 — ADD-ONS
 ═══════════════════════════════════════ */
 const addons = [
-  { icon: "💉", name: "Vaccination at Home",         price: "₹ __ per visit" },
-  { icon: "🧪", name: "Lab & Diagnostics Package",    price: "₹ __ per month" },
+  { icon: "💉", name: "Vaccination at Home", price: "₹ __ per visit" },
+  { icon: "🧪", name: "Lab & Diagnostics Package", price: "₹ __ per month" },
   { icon: "🥗", name: "Nutrition Counselling Program", price: "₹ __ for 3 months" },
-  { icon: "🧠", name: "Memory & Dementia Support",    price: "₹ __ per session" },
+  { icon: "🧠", name: "Memory & Dementia Support", price: "₹ __ per session" },
   { icon: "🚑", name: "Extra Hospital Accompaniment", price: "₹ __ per visit" },
-  { icon: "📱", name: "Elder Tech Device Rental",     price: "₹ __ per month" },
-  { icon: "🚗", name: "Transportation Support",        price: "₹ __ per trip" },
-  { icon: "💆", name: "Physiotherapy Sessions",       price: "₹ __ per session" },
+  { icon: "📱", name: "Elder Tech Device Rental", price: "₹ __ per month" },
+  { icon: "🚗", name: "Transportation Support", price: "₹ __ per trip" },
+  { icon: "💆", name: "Physiotherapy Sessions", price: "₹ __ per session" },
 ];
 
 function AddOns() {
@@ -608,6 +610,8 @@ export default function PlansPage() {
       <TransparencyBlock />
       <FAQ />
       <PlansCTA />
+      <Footer />
+      <Header />
     </>
   );
 }

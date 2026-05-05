@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 /* ─── Design Tokens ─── */
 const C = {
@@ -11,8 +13,8 @@ const C = {
   300: "#8EB69B",
   100: "#DAF1DE",
   primary: "#6B8F71",
-  terra:   "#C8A96A",
-  cream:   "#FDF8F3",
+  terra: "#C8A96A",
+  cream: "#FDF8F3",
 };
 const serif = { fontFamily: "var(--font-lora)" };
 
@@ -311,11 +313,11 @@ function CoreServicesSection() {
    SECTION 4 — ADD-ONS
 ═══════════════════════════════════════ */
 const addons = [
-  { icon: "💉", title: "Vaccination at Home",      desc: "Flu, pneumonia, and other recommended vaccines administered by trained staff" },
-  { icon: "🥗", title: "Nutrition Program",         desc: "Personalised 3-month diet plan by expert dieticians" },
-  { icon: "🧠", title: "Memory & Dementia Care",    desc: "Specialist programs and family coaching for memory-related conditions" },
-  { icon: "📱", title: "Elder Tech Devices",        desc: "GPS trackers, fall sensors, SOS buttons, smart medication dispensers" },
-  { icon: "🚗", title: "Transportation Support",    desc: "Safe, assisted travel to hospitals, clinics, or family events" },
+  { icon: "💉", title: "Vaccination at Home", desc: "Flu, pneumonia, and other recommended vaccines administered by trained staff" },
+  { icon: "🥗", title: "Nutrition Program", desc: "Personalised 3-month diet plan by expert dieticians" },
+  { icon: "🧠", title: "Memory & Dementia Care", desc: "Specialist programs and family coaching for memory-related conditions" },
+  { icon: "📱", title: "Elder Tech Devices", desc: "GPS trackers, fall sensors, SOS buttons, smart medication dispensers" },
+  { icon: "🚗", title: "Transportation Support", desc: "Safe, assisted travel to hospitals, clinics, or family events" },
 ];
 
 function AddOnsSection() {
@@ -548,6 +550,8 @@ export default function ServicesPage() {
       <HowItWorks />
       <ReassuranceBlock />
       <ServicesCTA />
+      <Footer />
+      <Header />
     </>
   );
 }

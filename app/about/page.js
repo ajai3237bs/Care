@@ -1,6 +1,9 @@
 "use client";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+
 
 /* ─── Design Tokens ─── */
 const C = {
@@ -394,6 +397,8 @@ export default function AboutPage() {
       <FoundersSection />
       <TodaySection />
       <AboutCTA />
+      <Footer />
+      <Header />
     </>
   );
 }

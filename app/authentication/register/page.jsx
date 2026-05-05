@@ -176,7 +176,9 @@ export default function RegisterPage() {
         style={{
           width: "44%",
           flexShrink: 0,
-          backgroundColor: C[950],
+          backgroundImage: "url('/asset/loginbanner.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "5rem 3.5rem 3rem",
@@ -185,102 +187,15 @@ export default function RegisterPage() {
           borderRight: "1px solid rgba(142,182,155,0.1)",
         }}
       >
-        {/* Background glows */}
+        {/* Dark overlay */}
         <div style={{
           position: "absolute",
-          top: "35%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "480px",
-          height: "480px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(142,182,155,0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
+          inset: 0,
+          background: "linear-gradient(to bottom, rgba(5,31,32,0.35) 0%, rgba(5,31,32,0.65) 100%)",
+          zIndex: 1,
         }} />
-        <div style={{
-          position: "absolute",
-          bottom: "5%",
-          right: "-15%",
-          width: "320px",
-          height: "320px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(200,169,106,0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-
-        {/* Logo */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <Link
-            href="/"
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.625rem", textDecoration: "none" }}
-          >
-            <LeafLogo size={36} />
-            <span style={{
-              fontFamily: "var(--font-lora)",
-              color: C[100],
-              fontSize: "1.375rem",
-              fontWeight: "700",
-              letterSpacing: "0.03em",
-            }}>
-              Celedon
-            </span>
-          </Link>
-        </div>
-
-        {/* Content */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ width: "2.5rem", height: "2px", backgroundColor: C.terra, marginBottom: "1.75rem" }} />
-          <h2 style={{
-            fontFamily: "var(--font-lora)",
-            fontSize: "1.875rem",
-            fontWeight: "400",
-            fontStyle: "italic",
-            color: C[100],
-            lineHeight: "1.45",
-            marginBottom: "1.25rem",
-          }}>
-            "A family&apos;s peace of mind begins with{" "}
-            <span style={{ color: C.terra }}>the right care.</span>"
-          </h2>
-          <p style={{ color: C[300], fontSize: "0.875rem", lineHeight: "1.7", marginBottom: "2.5rem" }}>
-            Creating an account takes just a minute. After that, your loved ones get the dedicated care and 24/7 support they deserve.
-          </p>
-
-          {/* Feature list */}
-          {[
-            "Personalised care plans tailored to your family",
-            "24/7 emergency support & dedicated caregivers",
-            "Regular health updates & transparent reporting",
-          ].map((item) => (
-            <div
-              key={item}
-              style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "1rem" }}
-            >
-              <div style={{
-                width: "1.25rem",
-                height: "1.25rem",
-                borderRadius: "50%",
-                backgroundColor: "rgba(142,182,155,0.15)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-                marginTop: "0.1rem",
-              }}>
-                <svg width="10" height="10" fill="none" stroke={C[300]} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <p style={{ color: C[300], fontSize: "0.85rem", lineHeight: "1.5", opacity: 0.85 }}>{item}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer */}
-        <div style={{ position: "relative", zIndex: 1, fontSize: "0.75rem", color: C[300], opacity: 0.4 }}>
-          © 2026 Celedon Elder Care
-        </div>
       </div>
+
 
       {/* Right Panel — form */}
       <div style={{

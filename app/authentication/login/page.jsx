@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const C = {
   950: "#051F20",
@@ -14,19 +15,19 @@ const C = {
   cream: "#F5F0E8",
 };
 
-function LeafLogo({ size = 36 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 34 34" fill="none">
-      <path
-        d="M17 3C17 3 5 10 5 21C5 27.6 10.4 33 17 33C23.6 33 29 27.6 29 21C29 10 17 3 17 3Z"
-        fill="#8EB69B"
-      />
-      <path d="M17 33V17" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M17 23L12 18" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M17 23L22 18" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
+// function LeafLogo({ size = 36 }) {
+//   return (
+//     <svg width={size} height={size} viewBox="0 0 34 34" fill="none">
+//       <path
+//         d="M17 3C17 3 5 10 5 21C5 27.6 10.4 33 17 33C23.6 33 29 27.6 29 21C29 10 17 3 17 3Z"
+//         fill="#8EB69B"
+//       />
+//       <path d="M17 33V17" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
+//       <path d="M17 23L12 18" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
+//       <path d="M17 23L22 18" stroke="#DAF1DE" strokeWidth="1.8" strokeLinecap="round" />
+//     </svg>
+//   );
+// }
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -71,7 +72,9 @@ export default function LoginPage() {
         style={{
           width: "44%",
           flexShrink: 0,
-          backgroundColor: C[950],
+          backgroundImage: "url('/asset/loginbanner.png')", 
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "5rem 3.5rem 3rem",
@@ -80,100 +83,13 @@ export default function LoginPage() {
           borderRight: "1px solid rgba(142,182,155,0.1)",
         }}
       >
-        {/* Background glows */}
+        {/* Dark overlay */}
         <div style={{
           position: "absolute",
-          top: "30%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "480px",
-          height: "480px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(142,182,155,0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
+          inset: 0,
+          background: "linear-gradient(to bottom, rgba(5,31,32,0.35) 0%, rgba(5,31,32,0.65) 100%)",
+          zIndex: 1,
         }} />
-        <div style={{
-          position: "absolute",
-          bottom: "10%",
-          right: "-10%",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(200,169,106,0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-
-        {/* Logo */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <Link
-            href="/"
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.625rem", textDecoration: "none" }}
-          >
-            <LeafLogo size={36} />
-            <span style={{
-              fontFamily: "var(--font-lora)",
-              color: C[100],
-              fontSize: "1.375rem",
-              fontWeight: "700",
-              letterSpacing: "0.03em",
-            }}>
-              Celedon
-            </span>
-          </Link>
-        </div>
-
-        {/* Quote & stats */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{
-            width: "2.5rem",
-            height: "2px",
-            backgroundColor: C.terra,
-            marginBottom: "1.75rem",
-          }} />
-          <blockquote style={{
-            fontFamily: "var(--font-lora)",
-            fontSize: "1.875rem",
-            fontWeight: "400",
-            fontStyle: "italic",
-            color: C[100],
-            lineHeight: "1.45",
-            marginBottom: "1.25rem",
-          }}>
-            "Because every parent deserves to feel{" "}
-            <span style={{ color: C.terra }}>seen, safe,</span> and deeply loved."
-          </blockquote>
-          <p style={{ color: C[300], fontSize: "0.875rem", lineHeight: "1.7", marginBottom: "2.5rem" }}>
-            Join thousands of families who trust Celedon to care for their loved ones — every single day.
-          </p>
-
-          {/* Stats */}
-          <div style={{ display: "flex", gap: "2.5rem" }}>
-            {[
-              { num: "10,000+", label: "Families served" },
-              { num: "24/7", label: "Support" },
-              { num: "5★", label: "Avg. rating" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div style={{
-                  fontFamily: "var(--font-lora)",
-                  fontSize: "1.5rem",
-                  fontWeight: "700",
-                  color: C.terra,
-                }}>
-                  {s.num}
-                </div>
-                <div style={{ fontSize: "0.75rem", color: C[300], marginTop: "0.15rem", opacity: 0.8 }}>
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div style={{ position: "relative", zIndex: 1, fontSize: "0.75rem", color: C[300], opacity: 0.4 }}>
-          © 2026 Celedon Elder Care
-        </div>
       </div>
 
       {/* Right Panel — form */}
@@ -188,7 +104,7 @@ export default function LoginPage() {
         <div style={{ width: "100%", maxWidth: "420px" }}>
 
           {/* Mobile logo */}
-          <div className="lg:hidden" style={{ marginBottom: "2.5rem" }}>
+          {/* <div className="lg:hidden" style={{ marginBottom: "2.5rem" }}>
             <Link
               href="/"
               style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
@@ -198,7 +114,7 @@ export default function LoginPage() {
                 Celedon
               </span>
             </Link>
-          </div>
+          </div> */}
 
           {/* Heading */}
           <div style={{ marginBottom: "2rem" }}>
