@@ -26,18 +26,6 @@ function CheckIcon({ color = "#8EB69B" }) {
   );
 }
 
-/* ─── Star Rating ─── */
-function Stars({ n = 5 }) {
-  return (
-    <div style={{ display: "flex", gap: "2px" }}>
-      {Array.from({ length: n }).map((_, i) => (
-        <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#C8A96A">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 /* ═══════════════════════════════════════
    SECTION 1 — HERO
@@ -56,12 +44,12 @@ function HeroSection() {
             {/* Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", backgroundColor: "rgba(142,182,155,0.2)", border: "1px solid rgba(142,182,155,0.5)", color: "#DAF1DE", padding: "0.375rem 1rem", borderRadius: "9999px", fontSize: "0.8rem", fontWeight: "600", marginBottom: "1.5rem" }}>
               <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#C8A96A", display: "inline-block" }} />
-              Elder Care Specialists
+              Elder & Postpartum Care
             </div>
 
             {/* Headline */}
             <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2.2rem,5vw,3.4rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
-              Give Your Loved Ones{" "}
+              Give Your Family{" "}
               <span style={{ color: "#C8A96A" }}>The Care</span>
               {" "}They Truly Deserve
             </h1>
@@ -85,9 +73,9 @@ function HeroSection() {
             {/* Stat strip */}
             <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.2)" }}>
               {[
-                { n: "10,000+", l: "Families Served" },
-                { n: "30+", l: "Years Expertise" },
                 { n: "24/7", l: "Emergency Support" },
+                { n: "100%", l: "Background Verified" },
+                { n: "7-Day", l: "Satisfaction Guarantee" },
               ].map(({ n, l }) => (
                 <div key={l}>
                   <p style={{ ...serif, color: "#C8A96A", fontSize: "1.6rem", fontWeight: "700", lineHeight: 1 }}>{n}</p>
@@ -117,6 +105,7 @@ function HeroSection() {
 const trustPillars = [
   { label: "Home Care", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg> },
   { label: "Medical Support", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg> },
+  { label: "Postpartum Care", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" /></svg> },
   { label: "Wellness", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg> },
   { label: "24/7 Emergency", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg> },
   { label: "Geriatric Experts", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="26" height="26"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg> },
@@ -126,9 +115,9 @@ function TrustBar() {
   return (
     <section style={{ backgroundColor: "#DAF1DE", padding: "3.5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "center" }}>
-        <p style={{ color: "#235347", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Trusted Nationwide</p>
+        <p style={{ color: "#235347", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>What We Offer</p>
         <h2 style={{ ...serif, color: "#0B2B26", fontSize: "clamp(1.4rem,3vw,1.9rem)", fontWeight: "700", marginBottom: "2.5rem" }}>
-          Trusted by 10,000+ Families Across India
+          Expert Elder & Postpartum Care — Right at Your Doorstep
         </h2>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
           {trustPillars.map(({ label, icon }) => (
@@ -167,6 +156,11 @@ const challenges = [
     desc: "Living far from parents brings constant worry. Celedon keeps you connected with real-time updates and 24/7 caregiver access.",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="28" height="28"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>,
   },
+  {
+    title: "Postpartum Recovery",
+    desc: "The weeks after delivery are demanding — physically and emotionally. Our postpartum nurses and newborn care specialists step in so new mothers can heal and bond with confidence.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="28" height="28"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /><path d="M12 17v-6" strokeLinecap="round" /></svg>,
+  },
 ];
 
 function ChallengesSection() {
@@ -174,9 +168,9 @@ function ChallengesSection() {
     <section style={{ backgroundColor: "#fff", padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={{ color: "#C8A96A", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>The Problem We Solve</p>
+          <p style={{ color: "#C8A96A", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>The Problems We Solve</p>
           <h2 style={{ ...serif, color: "#051F20", fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700", lineHeight: 1.25 }}>
-            Aging Brings New Challenges.<br />We Help You Face Them Together.
+            Life's Most Important Transitions.<br />We Help You Face Them Together.
           </h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.25rem" }}>
@@ -217,6 +211,12 @@ const services = [
     points: ["24/7 helpline", "Emergency dispatch", "Family updates", "Home safety checks"],
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>,
   },
+  {
+    title: "Postpartum Support",
+    desc: "Trained postpartum nurses and newborn care specialists for new mothers — covering recovery, lactation, baby care, and mental wellness through every step.",
+    points: ["Mother recovery care", "Newborn nursing", "Lactation guidance", "Postpartum wellness"],
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg>,
+  },
 ];
 
 function ServicesSection() {
@@ -226,7 +226,7 @@ function ServicesSection() {
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <p style={{ color: "#6B8F71", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>How We Help</p>
           <h2 style={{ ...serif, color: "#051F20", fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
-            Holistic Care, Designed for Every Senior
+            Holistic Care, For Every Generation
           </h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
@@ -257,7 +257,7 @@ function ServicesSection() {
    SECTION 5 — WHY CHOOSE CELEDON
 ═══════════════════════════════════════ */
 const whyPoints = [
-  "30+ years of geriatric expertise behind every care plan",
+  "Deep geriatric and postpartum expertise behind every care plan",
   "International care models adapted for Indian families",
   "Background-verified, trained, and empathetic caregivers",
   "Tech-enabled monitoring with real-time family dashboards",
@@ -265,10 +265,10 @@ const whyPoints = [
 ];
 
 const statsGrid = [
-  { n: "10K+", l: "Families Served" },
-  { n: "500+", l: "Verified Caregivers" },
-  { n: "15+", l: "Cities Covered" },
-  { n: "96%", l: "Satisfaction Rate" },
+  { n: "24/7", l: "Emergency Support" },
+  { n: "100%", l: "Background Verified" },
+  { n: "7-Day", l: "Satisfaction Guarantee" },
+  { n: "2024", l: "Founded with Purpose" },
 ];
 
 function WhyChooseSection() {
@@ -284,7 +284,7 @@ function WhyChooseSection() {
               The Celedon Difference
             </h2>
             <p style={{ color: "#8EB69B", fontSize: "0.95rem", lineHeight: "1.75", marginBottom: "2rem" }}>
-              We combine decades of geriatric expertise with a warm, human-centred approach — so your parents get care that feels like family, not a clinic.
+              We combine geriatric expertise and postpartum care in one trusted service — so every generation in your family gets care that feels like family, not a clinic.
             </p>
             <ul style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               {whyPoints.map((p) => (
@@ -336,54 +336,42 @@ function WhyChooseSection() {
 }
 
 /* ═══════════════════════════════════════
-   SECTION 6 — TESTIMONIALS
+   SECTION 6 — OUR PROMISE
 ═══════════════════════════════════════ */
-const testimonials = [
+const promises = [
   {
-    name: "Priya Menon", city: "Bengaluru", initials: "PM",
-    quote: "The Celedon team treats my mother like their own family. Watching her laugh and thrive at 78 — that's priceless. I finally sleep without worry.",
+    emoji: "🧡",
+    title: "Treated Like Family, Not a Case",
+    desc: "Every senior or new mother we care for is a real person with a real story. Our caregivers are trained to listen, connect, and genuinely care — not just complete a checklist.",
   },
   {
-    name: "Rajesh Sharma", city: "Delhi", initials: "RS",
-    quote: "Being posted abroad, I was terrified about my father's health. Celedon's daily updates and 24/7 access have been a true lifesaver for our family.",
+    emoji: "📲",
+    title: "You're Never Left in the Dark",
+    desc: "Whether you're in the next room or in another country, we keep you updated. Real-time reports, family calls, and a direct line to your care team — always.",
   },
   {
-    name: "Anita Krishnaswamy", city: "Chennai", initials: "AK",
-    quote: "The companion they assigned clicked instantly with my father-in-law. He's more active, more cheerful — it's transformed the whole household.",
+    emoji: "🛡️",
+    title: "We Stand Behind Every Plan",
+    desc: "Not happy in the first 7 days? We'll make it right or refund you. No fine print. We'd rather earn your trust than hold onto your money.",
   },
 ];
 
-function TestimonialsSection() {
+function PromisesSection() {
   return (
     <section style={{ backgroundColor: "#FDF8F3", padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={{ color: "#6B8F71", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Member Stories</p>
+          <p style={{ color: "#6B8F71", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>What We Stand For</p>
           <h2 style={{ ...serif, color: "#051F20", fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
-            Hear From Our Members
+            Three Things We Promise Every Family
           </h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
-          {testimonials.map(({ name, city, initials, quote }) => (
-            <div key={name} style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "2rem", boxShadow: "0 4px 20px rgba(22,56,50,0.07)", border: "1px solid rgba(142,182,155,0.2)", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-              <div style={{ color: "#8EB69B", opacity: 0.5 }}>
-                <svg width="30" height="22" viewBox="0 0 36 28" fill="currentColor">
-                  <path d="M0 28V17C0 6.333 5.333 1 16 0l2 3C12.667 4.333 10 6.667 9 10h8v18H0zm20 0V17C20 6.333 25.333 1 36 0l2 3C32.667 4.333 30 6.667 29 10h8v18H20z" />
-                </svg>
-              </div>
-              <p style={{ color: "#163832", fontSize: "0.9rem", lineHeight: "1.8", fontStyle: "italic", flex: 1 }}>{quote}</p>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <div style={{ width: "42px", height: "42px", borderRadius: "50%", backgroundColor: "#163832", color: "#8EB69B", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem", fontWeight: "700" }}>
-                    {initials}
-                  </div>
-                  <div>
-                    <p style={{ color: "#0B2B26", fontSize: "0.875rem", fontWeight: "600" }}>{name}</p>
-                    <p style={{ color: "#8EB69B", fontSize: "0.75rem" }}>{city}</p>
-                  </div>
-                </div>
-                <Stars />
-              </div>
+          {promises.map(({ emoji, title, desc }) => (
+            <div key={title} style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "2rem", boxShadow: "0 4px 20px rgba(22,56,50,0.07)", border: "1px solid rgba(142,182,155,0.2)", display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div style={{ fontSize: "2.25rem", lineHeight: 1 }}>{emoji}</div>
+              <h3 style={{ ...serif, color: "#0B2B26", fontSize: "1.1rem", fontWeight: "700", lineHeight: 1.4 }}>{title}</h3>
+              <p style={{ color: "#235347", fontSize: "0.875rem", lineHeight: "1.8" }}>{desc}</p>
             </div>
           ))}
         </div>
@@ -406,10 +394,10 @@ function CTABanner() {
           Get Started Today
         </p>
         <h2 style={{ ...serif, color: "#fff", fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: "700", lineHeight: 1.25, marginBottom: "1rem" }}>
-          Give Your Parents the Care They Deserve
+          Give Your Family the Care They Deserve
         </h2>
         <p style={{ color: "#DAF1DE", opacity: 0.85, fontSize: "1rem", lineHeight: "1.7", marginBottom: "2rem" }}>
-          Join 10,000+ Indian families who trust Celedon to care for the people they love most.
+          From elder care to postpartum support — Celedon is here to care for the people you love most, right at home.
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
           <Link href="/plans" style={{ backgroundColor: "#C8A96A", color: "#fff", padding: "1rem 2.25rem", borderRadius: "9999px", fontSize: "1rem", fontWeight: "700", textDecoration: "none", boxShadow: "0 6px 24px rgba(212,149,106,0.4)", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
@@ -436,7 +424,7 @@ export default function HomePage() {
       <ChallengesSection />
       <ServicesSection />
       <WhyChooseSection />
-      <TestimonialsSection />
+      <PromisesSection />
       <CTABanner />
       <Footer />
       <Header />

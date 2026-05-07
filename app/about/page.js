@@ -47,8 +47,8 @@ function AboutHero() {
 
         <ScrollReveal animation="fadeUp" delay={120} duration={750}>
           <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2rem,5vw,3.2rem)", fontWeight: "700", lineHeight: "1.2", maxWidth: "640px", marginBottom: "1.25rem", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
-            Supporting every generation with care{" "}
-            <span style={{ color: C.terra }}>Comfort and Dignity</span>
+            Supporting Every Generation —{" "}
+            <span style={{ color: C.terra }}>Elders, New Mothers & Newborns</span>
           </h1>
         </ScrollReveal>
 
@@ -82,7 +82,8 @@ function OurStory() {
                 {[
                   "Celedon was born out of a personal moment — watching a parent struggle to get the care they deserved, while family members were miles away, helpless.",
                   "We looked around and saw the same story repeating in thousands of Indian families. Quality elder care existed — but it was fragmented, hard to access, and rarely felt human.",
-                  "So we built Celedon. A service designed not just around health, but around dignity, warmth, and the comfort of home. We're just getting started — and we're building this with every family who trusts us.",
+                  "As we grew, we heard another story just as often — new mothers sent home after delivery with little support, exhausted and overwhelmed. So we expanded Celedon to include postpartum and newborn care too.",
+                  "Today, Celedon serves two of life's most important transitions — ageing with dignity, and new parenthood with confidence. Both deserve the same warmth, expertise, and care.",
                 ].map((p, i) => (
                   <p key={i} style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>{p}</p>
                 ))}
@@ -103,7 +104,7 @@ function OurStory() {
                   "Care should never feel institutional. Home is where healing happens."
                 </p>
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1.25rem", display: "flex", gap: "2rem" }}>
-                  {[{ n: "500+", l: "Families Touched" }, { n: "96%", l: "Satisfaction" }, { n: "2024", l: "Founded" }].map(({ n, l }) => (
+                  {[{ n: "2024", l: "Founded" }, { n: "7-Day", l: "Guarantee" }, { n: "100%", l: "Verified Care" }].map(({ n, l }) => (
                     <div key={l}>
                       <p style={{ ...serif, color: C.terra, fontSize: "1.5rem", fontWeight: "700" }}>{n}</p>
                       <p style={{ color: C[300], fontSize: "0.75rem", marginTop: "0.2rem" }}>{l}</p>
@@ -153,10 +154,10 @@ function MissionVision() {
               </div>
               <p style={{ color: C.terra, fontSize: "0.75rem", fontWeight: "700", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Our Mission</p>
               <p style={{ ...serif, color: C[100], fontSize: "1.15rem", fontWeight: "700", lineHeight: 1.5, marginBottom: "1rem" }}>
-                To make aging a dignified, joyful, and well-supported experience.
+                To make every important life transition — ageing and new parenthood — a dignified, supported, and joyful experience.
               </p>
               <p style={{ color: C[300], fontSize: "0.9rem", lineHeight: "1.75" }}>
-                Starting right at home — because that's where seniors feel safe, loved, and most like themselves.
+                Starting right at home — because that's where every generation feels safest, most loved, and most like themselves.
               </p>
             </div>
           </ScrollReveal>
@@ -172,10 +173,10 @@ function MissionVision() {
               </div>
               <p style={{ color: C[300], fontSize: "0.75rem", fontWeight: "700", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Our Vision</p>
               <p style={{ ...serif, color: C[100], fontSize: "1.15rem", fontWeight: "700", lineHeight: 1.5, marginBottom: "1rem" }}>
-                Every senior in India has access to expert care, companionship, and freedom.
+                Every Indian family — seniors, new mothers, and newborns — has access to expert, compassionate home care.
               </p>
               <p style={{ color: C[300], fontSize: "0.9rem", lineHeight: "1.75" }}>
-                A future where aging on your own terms isn't a privilege — it's the standard.
+                A future where quality care at home isn't a privilege — it's the standard for every generation.
               </p>
             </div>
           </ScrollReveal>
@@ -192,7 +193,7 @@ const values = [
   { emoji: "💚", title: "People over process", desc: "Every senior is a person, not a case file. We treat them as we'd treat our own family." },
   { emoji: "🏠", title: "Home is sacred", desc: "Care should never feel institutional. Comfort, familiarity, and warmth matter as much as medicine." },
   { emoji: "🤝", title: "Family stays in the loop", desc: "No parent should feel alone. No child should feel helpless. We keep everyone connected." },
-  { emoji: "📈", title: "Always improving", desc: "We're a startup and we learn fast. Every family we serve makes us sharper and more thoughtful." },
+  { emoji: "📈", title: "Always improving", desc: "We move fast and learn from every family we serve. Each care plan makes us sharper and more thoughtful." },
   { emoji: "❤️", title: "Empathy first", desc: "Every decision starts with one question: how does this feel for the senior?" },
 ];
 
@@ -319,7 +320,7 @@ function TodaySection() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {[
               { icon: "📍", label: "Serving families across India", sub: "And expanding every month" },
-              { icon: "⭐", label: "96% member satisfaction", sub: "Based on direct family feedback" },
+              { icon: "⭐", label: "7-day satisfaction guarantee", sub: "We stand behind every care plan we deliver" },
               { icon: "🚀", label: "Launched in 2024", sub: "Fresh eyes on an old problem" },
             ].map(({ icon, label, sub }, i) => (
               <ScrollReveal key={label} animation="fadeRight" delay={i * 110} duration={650}>

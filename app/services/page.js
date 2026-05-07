@@ -45,7 +45,7 @@ function ServicesHero() {
 
         <ScrollReveal animation="fadeUp" delay={120}>
           <h1 style={{ ...serif, color: "#fff", fontSize: "clamp(2rem,5vw,3.4rem)", fontWeight: "700", lineHeight: "1.2", maxWidth: "660px", marginBottom: "1.25rem", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
-            Everything Your Parent Needs,{" "}
+            Everything Your Family Needs,{" "}
             <span style={{ color: C.terra }}>Delivered at Home</span>
           </h1>
         </ScrollReveal>
@@ -74,8 +74,8 @@ function HonestIntro() {
         <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center" }}>
           <div style={{ width: "40px", height: "3px", backgroundColor: C.terra, borderRadius: "2px", margin: "0 auto 1.5rem" }} />
           <p style={{ ...serif, color: C[100], fontSize: "clamp(1.1rem,2.5vw,1.4rem)", lineHeight: "1.8", fontStyle: "italic" }}>
-            "We're not trying to do everything at once. We've carefully chosen the services that matter most — the ones that make a{" "}
-            <span style={{ color: C.terra }}>real difference</span> in a senior's daily life."
+            "We've carefully chosen the services that matter most — for elders who deserve dignity and comfort, and for new mothers who deserve support and strength. Every service makes a{" "}
+            <span style={{ color: C.terra }}>real difference</span> in your family's daily life."
           </p>
         </div>
       </ScrollReveal>
@@ -215,6 +215,54 @@ const services = [
     forWho: "Seniors recovering from illness or managing conditions that require medical aids at home.",
     quote: null,
   },
+  {
+    emoji: "🤱",
+    num: "09",
+    title: "Postpartum Mother Care",
+    tagline: "The first 40 days — and beyond — done right.",
+    accent: C[300],
+    points: [
+      "Trained postpartum nurses and care attendants at home",
+      "Personal hygiene and C-section wound care support",
+      "Lactation guidance and breastfeeding support",
+      "Nutritious diet planning for recovery and milk production",
+      "Emotional support and daily wellness check-ins",
+    ],
+    forWho: "New mothers in the first 40 days after delivery — whether normal or C-section — who need professional care at home.",
+    quote: "The period after delivery is just as important as the delivery itself. Yet most families are completely unprepared for it.",
+  },
+  {
+    emoji: "👶",
+    num: "10",
+    title: "Newborn Baby Care",
+    tagline: "Expert hands for your little one's earliest days.",
+    accent: C.terra,
+    points: [
+      "Trained baby nurses for newborn bathing and care routines",
+      "Feeding support — breastfeeding and bottle-feeding guidance",
+      "Weight, growth, and health monitoring",
+      "Sleep routine guidance and settling techniques",
+      "Vaccination schedule reminders and tracking",
+    ],
+    forWho: "New parents — especially first-timers — who need confident, experienced support through the first months of parenthood.",
+    quote: null,
+  },
+  {
+    emoji: "🌸",
+    num: "11",
+    title: "Postpartum Mental Wellness",
+    tagline: "Because a healthy mother means a healthy family.",
+    accent: C[300],
+    points: [
+      "Postpartum depression screening and early intervention",
+      "Counselling sessions with trained therapists",
+      "Stress management and relaxation techniques",
+      "Partner and family emotional support coaching",
+      "24/7 confidential helpline for new mothers",
+    ],
+    forWho: "Mothers experiencing baby blues, anxiety, or emotional overwhelm after delivery — and their partners and families.",
+    quote: "Postpartum mental health is real, valid, and something we take seriously. You don't have to go through this alone.",
+  },
 ];
 
 function ServiceCard({ service, index }) {
@@ -293,8 +341,8 @@ function CoreServicesSection() {
             <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700", lineHeight: 1.25 }}>
               Our Core Services
             </h2>
-            <p style={{ color: C[700], fontSize: "0.95rem", marginTop: "0.75rem", maxWidth: "500px", margin: "0.75rem auto 0" }}>
-              Eight carefully chosen services. Each one built around what actually matters in a senior's daily life.
+            <p style={{ color: C[700], fontSize: "0.95rem", marginTop: "0.75rem", maxWidth: "560px", margin: "0.75rem auto 0" }}>
+              Eleven carefully chosen services — eight for elder care and three for postpartum — each built around what actually matters for your family.
             </p>
           </div>
         </ScrollReveal>
@@ -314,10 +362,12 @@ function CoreServicesSection() {
 ═══════════════════════════════════════ */
 const addons = [
   { icon: "💉", title: "Vaccination at Home", desc: "Flu, pneumonia, and other recommended vaccines administered by trained staff" },
-  { icon: "🥗", title: "Nutrition Program", desc: "Personalised 3-month diet plan by expert dieticians" },
+  { icon: "🥗", title: "Nutrition Program", desc: "Personalised 3-month diet plan by expert dieticians for elders and new mothers" },
   { icon: "🧠", title: "Memory & Dementia Care", desc: "Specialist programs and family coaching for memory-related conditions" },
   { icon: "📱", title: "Elder Tech Devices", desc: "GPS trackers, fall sensors, SOS buttons, smart medication dispensers" },
   { icon: "🚗", title: "Transportation Support", desc: "Safe, assisted travel to hospitals, clinics, or family events" },
+  { icon: "🥛", title: "Lactation Consultant", desc: "One-on-one breastfeeding guidance and support from certified lactation consultants" },
+  { icon: "💆", title: "Postpartum Massage Therapy", desc: "Traditional and modern postnatal massage for recovery and relaxation" },
 ];
 
 function AddOnsSection() {
@@ -454,7 +504,7 @@ function ReassuranceBlock() {
                 <span style={{ color: C.terra }}>But We're Not Guessing</span>
               </h2>
               <p style={{ color: C[300], fontSize: "0.95rem", lineHeight: "1.8", marginBottom: "0.75rem" }}>
-                At Celedon, we've built our services based on deep research, international geriatric care standards, and honest conversations with hundreds of Indian families. Every service we offer is one we'd want for our own parents.
+                At Celedon, we've built our services based on deep research, international care standards, and honest conversations with hundreds of Indian families. Whether it's elder care or postpartum support — every service we offer is one we'd want for our own family.
               </p>
               <p style={{ color: C[300], fontSize: "0.95rem", lineHeight: "1.8" }}>
                 We may be a young company —{" "}
@@ -477,7 +527,7 @@ function ReassuranceBlock() {
 
               {/* Stat strip */}
               <div style={{ display: "flex", gap: "1.5rem", marginTop: "0.5rem", padding: "1.25rem 1.5rem", backgroundColor: "rgba(212,149,106,0.1)", borderRadius: "16px", border: "1px solid rgba(212,149,106,0.2)" }}>
-                {[{ n: "500+", l: "Families Served" }, { n: "96%", l: "Satisfaction" }, { n: "8", l: "Core Services" }].map(({ n, l }) => (
+                {[{ n: "24/7", l: "Emergency Support" }, { n: "7-Day", l: "Guarantee" }, { n: "11", l: "Core Services" }].map(({ n, l }) => (
                   <div key={l} style={{ flex: 1, textAlign: "center" }}>
                     <p style={{ ...serif, color: C.terra, fontSize: "1.5rem", fontWeight: "700" }}>{n}</p>
                     <p style={{ color: C[300], fontSize: "0.72rem", marginTop: "0.2rem" }}>{l}</p>

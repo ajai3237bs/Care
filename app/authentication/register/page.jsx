@@ -176,7 +176,7 @@ export default function RegisterPage() {
         style={{
           width: "44%",
           flexShrink: 0,
-          backgroundImage: "url('/asset/loginbanner.png')",
+          backgroundImage: "url('/asset/registerbanner.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           flexDirection: "column",
@@ -221,6 +221,30 @@ export default function RegisterPage() {
               </span>
             </Link>
           </div>
+
+          {/* Back button */}
+          <Link
+            href="/authentication/login"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              color: C[300],
+              fontSize: "0.825rem",
+              fontFamily: "var(--font-dm-sans)",
+              textDecoration: "none",
+              marginBottom: "2rem",
+              opacity: 0.75,
+              transition: "opacity 0.2s",
+            }}
+            onMouseEnter={e => e.currentTarget.style.opacity = "1"}
+            onMouseLeave={e => e.currentTarget.style.opacity = "0.75"}
+          >
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Back to Sign In
+          </Link>
 
           {/* Heading */}
           <div style={{ marginBottom: "2rem" }}>

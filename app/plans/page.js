@@ -37,7 +37,7 @@ function PlansHero() {
         </ScrollReveal>
         <ScrollReveal animation="fadeUp" delay={240}>
           <p style={{ color: "rgba(218,241,222,0.88)", fontSize: "1.05rem", lineHeight: "1.8", maxWidth: "520px", margin: "0 auto 2rem" }}>
-            We've kept our plans straightforward — because choosing care for your parent shouldn't feel complicated.
+            Elder care or postpartum care — we've kept our plans straightforward, because choosing the right care for your family shouldn't feel complicated.
           </p>
           <a href="#plans" style={{ backgroundColor: C.terra, color: "#fff", padding: "0.9rem 2rem", borderRadius: "9999px", fontSize: "0.95rem", fontWeight: "700", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.5rem", boxShadow: "0 6px 24px rgba(200,169,106,0.35)" }}>
             Compare Plans Below
@@ -71,6 +71,8 @@ function HonestIntro() {
 /* ═══════════════════════════════════════
    SECTION 3 — PLAN CARDS
 ═══════════════════════════════════════ */
+
+/* ─── Elder Care Plans ─── */
 const plans = [
   {
     id: "silver",
@@ -148,101 +150,228 @@ const plans = [
   },
 ];
 
-function PlanCards() {
+/* ─── Postpartum Care Plans ─── */
+const postpartumPlans = [
+  {
+    id: "seedling",
+    emoji: "🌱",
+    name: "Seedling",
+    tagline: "Essential support for the early days.",
+    forWho: "New mothers who need core postpartum care in the first 2 weeks",
+    duration: "2-Week Package",
+    color: C[300],
+    bgLight: "rgba(142,182,155,0.08)",
+    borderColor: C[300],
+    popular: false,
+    included: [
+      "Postpartum nurse (daytime, 5 days/week)",
+      "Daily mother health & recovery check",
+      "Basic newborn care guidance",
+      "2 lactation support sessions",
+      "Postnatal meal & nutrition guidance",
+      "24/7 emergency helpline access",
+    ],
+    excluded: ["Baby nurse", "Postpartum massage", "Mental wellness sessions", "Dedicated care coordinator"],
+    bestFor: "Mothers with good support at home who need professional daytime care through the first two weeks.",
+    cta: "Start with Seedling",
+  },
+  {
+    id: "bloom",
+    emoji: "🌸",
+    name: "Bloom",
+    tagline: "Complete care for mother and baby.",
+    forWho: "New mothers who want full support through the entire first month",
+    duration: "4-Week Package",
+    color: C.terra,
+    bgLight: "rgba(200,169,106,0.08)",
+    borderColor: C.terra,
+    popular: true,
+    included: [
+      "Everything in Seedling, plus:",
+      "Postpartum nurse (daily, 6 days/week)",
+      "Newborn baby nurse support",
+      "4 lactation consultant sessions",
+      "C-section wound care (if applicable)",
+      "Postnatal nutrition & diet plan",
+      "Weekly family health briefing",
+      "Priority emergency response",
+    ],
+    excluded: ["24/7 baby nurse", "Postpartum massage therapy", "Mental wellness counselling"],
+    bestFor: "Mothers recovering from C-section or needing daily professional care — especially recommended for first-time parents.",
+    cta: "Choose Bloom",
+  },
+  {
+    id: "flourish",
+    emoji: "💫",
+    name: "Flourish",
+    tagline: "The complete 6-week postpartum journey.",
+    forWho: "Families who want end-to-end care through the full postpartum period",
+    duration: "6-Week Package",
+    color: C[300],
+    bgLight: "rgba(142,182,155,0.08)",
+    borderColor: C[800],
+    popular: false,
+    included: [
+      "Everything in Bloom, plus:",
+      "24/7 baby nurse availability",
+      "4 postpartum mental wellness sessions",
+      "4 postnatal massage therapy sessions",
+      "Full 6-week lactation support",
+      "Dedicated postpartum care coordinator",
+      "Partner & family coaching sessions",
+      "Comprehensive 6-week health assessment",
+    ],
+    excluded: [],
+    bestFor: "Families wanting complete, hands-off postpartum management — ideal for twins, C-sections, or mothers with mental wellness concerns.",
+    cta: "Go Flourish",
+  },
+];
+
+/* ─── Shared plan card renderer ─── */
+function PlanCardItem({ plan, i }) {
+  return (
+    <ScrollReveal key={plan.id} animation="fadeUp" delay={i * 120} duration={680} style={{ height: "100%" }}>
+      <div style={{
+        borderRadius: "24px", overflow: "hidden",
+        border: plan.popular ? `2px solid ${C.terra}` : `1px solid ${plan.borderColor === C[800] ? "#DAF1DE" : "#DAF1DE"}`,
+        backgroundColor: "#fff", boxShadow: plan.popular ? "0 12px 48px rgba(200,169,106,0.18)" : "0 4px 24px rgba(5,31,32,0.06)",
+        display: "flex", flexDirection: "column", height: "100%", position: "relative",
+      }}>
+        {plan.popular && (
+          <div style={{ position: "absolute", top: "16px", right: "16px", backgroundColor: C.terra, color: "#fff", fontSize: "0.7rem", fontWeight: "700", padding: "0.3rem 0.75rem", borderRadius: "9999px", letterSpacing: "0.05em", zIndex: 1 }}>
+            ⭐ Most Chosen
+          </div>
+        )}
+        <div style={{ height: "6px", backgroundColor: plan.popular ? C.terra : plan.color }} />
+
+        <div style={{ padding: "1.75rem", display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ marginBottom: "1.25rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+              <span style={{ fontSize: "2rem" }}>{plan.emoji}</span>
+              {plan.duration && (
+                <span style={{ fontSize: "0.7rem", fontWeight: "700", color: plan.popular ? C.terra : C[700], backgroundColor: plan.popular ? "rgba(200,169,106,0.1)" : C.cream, padding: "0.2rem 0.625rem", borderRadius: "9999px", border: `1px solid ${plan.popular ? "rgba(200,169,106,0.3)" : "#DAF1DE"}` }}>
+                  {plan.duration}
+                </span>
+              )}
+            </div>
+            <h3 style={{ ...serif, color: C[950], fontSize: "1.5rem", fontWeight: "700", marginTop: "0.5rem" }}>{plan.name} Plan</h3>
+            <p style={{ color: plan.popular ? C.terra : C.primary, fontSize: "0.875rem", fontStyle: "italic", marginTop: "0.25rem" }}>{plan.tagline}</p>
+          </div>
+
+          <div style={{ backgroundColor: plan.popular ? "rgba(200,169,106,0.08)" : C.cream, borderRadius: "10px", padding: "0.625rem 0.875rem", marginBottom: "1.25rem" }}>
+            <p style={{ color: C[700], fontSize: "0.8rem", lineHeight: "1.5" }}><strong style={{ color: C[800] }}>For:</strong> {plan.forWho}</p>
+          </div>
+
+          <div style={{ marginBottom: "1.25rem", padding: "1rem", backgroundColor: plan.popular ? "rgba(200,169,106,0.06)" : "rgba(22,56,50,0.03)", borderRadius: "12px", border: `1px dashed ${plan.popular ? C.terra : "#DAF1DE"}` }}>
+            <p style={{ color: C[700], fontSize: "0.75rem", marginBottom: "0.25rem" }}>Starting from</p>
+            <p style={{ ...serif, color: plan.popular ? C.terra : C[800], fontSize: "2rem", fontWeight: "700", lineHeight: 1 }}>₹ ___</p>
+            <p style={{ color: C[700], fontSize: "0.75rem", marginTop: "0.25rem" }}>
+              {plan.duration ? `${plan.duration} · fixed package` : "/ month · Save up to 20% annually"}
+            </p>
+          </div>
+
+          <p style={{ color: C[800], fontSize: "0.72rem", fontWeight: "700", letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: "0.625rem" }}>What&apos;s Included</p>
+          <ul style={{ display: "flex", flexDirection: "column", gap: "0.45rem", marginBottom: "1.25rem" }}>
+            {plan.included.map((item) => (
+              <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.83rem", color: C[700], lineHeight: "1.55" }}>
+                <span style={{ color: plan.popular ? C.terra : C[300], flexShrink: 0, marginTop: "1px", fontWeight: "700" }}>✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          {plan.excluded.length > 0 && (
+            <>
+              <p style={{ color: "#999", fontSize: "0.72rem", fontWeight: "700", letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Not Included</p>
+              <ul style={{ display: "flex", flexDirection: "column", gap: "0.35rem", marginBottom: "1.25rem" }}>
+                {plan.excluded.map((item) => (
+                  <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.82rem", color: "#999", lineHeight: "1.5" }}>
+                    <span style={{ flexShrink: 0 }}>✕</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <div style={{ backgroundColor: C.cream, borderRadius: "10px", padding: "0.75rem 0.875rem", marginBottom: "1.5rem", marginTop: "auto" }}>
+            <p style={{ fontSize: "0.7rem", fontWeight: "700", color: C[700], textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.25rem" }}>Best For</p>
+            <p style={{ fontSize: "0.82rem", color: C[700], lineHeight: "1.6" }}>{plan.bestFor}</p>
+          </div>
+
+          <Link href="/contact" style={{
+            display: "block", textAlign: "center", padding: "0.875rem", borderRadius: "9999px",
+            backgroundColor: plan.popular ? C.terra : "transparent",
+            color: plan.popular ? "#fff" : C[800],
+            border: plan.popular ? "none" : `2px solid ${C[800]}`,
+            fontSize: "0.9rem", fontWeight: "700", textDecoration: "none",
+            boxShadow: plan.popular ? "0 6px 20px rgba(200,169,106,0.3)" : "none",
+          }}>
+            {plan.cta} →
+          </Link>
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+}
+
+function PlanCards({ careTab, setCareTab }) {
+  const activePlans = careTab === "elder" ? plans : postpartumPlans;
+
   return (
     <section id="plans" style={{ backgroundColor: "#fff", padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <ScrollReveal animation="fadeUp">
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ color: C.primary, fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Choose Your Plan</p>
             <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>Find the Right Fit</h2>
           </div>
         </ScrollReveal>
 
+        {/* ── Tab Toggle ── */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "3rem" }}>
+          <div style={{ display: "inline-flex", backgroundColor: C.cream, borderRadius: "9999px", padding: "0.3rem", border: "1px solid #DAF1DE", gap: "0.25rem" }}>
+            {[
+              { key: "elder", label: "👴  Elder Care" },
+              { key: "postpartum", label: "🤱  Postpartum Care" },
+            ].map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setCareTab(key)}
+                style={{
+                  padding: "0.625rem 1.5rem",
+                  borderRadius: "9999px",
+                  border: "none",
+                  cursor: "pointer",
+                  fontFamily: "var(--font-dm-sans)",
+                  fontSize: "0.875rem",
+                  fontWeight: "600",
+                  backgroundColor: careTab === key ? (key === "postpartum" ? "#C8A96A" : C[800]) : "transparent",
+                  color: careTab === key ? "#fff" : C[700],
+                  transition: "all 0.25s",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Category label ── */}
+        <ScrollReveal animation="fadeUp" key={careTab}>
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", backgroundColor: careTab === "elder" ? "rgba(22,56,50,0.06)" : "rgba(200,169,106,0.08)", border: `1px solid ${careTab === "elder" ? "rgba(142,182,155,0.3)" : "rgba(200,169,106,0.3)"}`, padding: "0.375rem 1rem", borderRadius: "9999px" }}>
+              <span style={{ fontSize: "0.8rem", fontWeight: "600", color: careTab === "elder" ? C[800] : C.terra }}>
+                {careTab === "elder" ? "Ongoing monthly membership plans for elder care" : "Fixed-duration care packages for new mothers & newborns"}
+              </span>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <div className="plans-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1.5rem", alignItems: "start" }}>
-          {plans.map((plan, i) => (
-            <ScrollReveal key={plan.id} animation="fadeUp" delay={i * 120} duration={680} style={{ height: "100%" }}>
-              <div style={{
-                borderRadius: "24px", overflow: "hidden", border: plan.popular ? `2px solid ${C.terra}` : "1px solid #DAF1DE",
-                backgroundColor: "#fff", boxShadow: plan.popular ? "0 12px 48px rgba(200,169,106,0.18)" : "0 4px 24px rgba(5,31,32,0.06)",
-                display: "flex", flexDirection: "column", height: "100%", position: "relative",
-              }}>
-                {/* Popular badge */}
-                {plan.popular && (
-                  <div style={{ position: "absolute", top: "16px", right: "16px", backgroundColor: C.terra, color: "#fff", fontSize: "0.7rem", fontWeight: "700", padding: "0.3rem 0.75rem", borderRadius: "9999px", letterSpacing: "0.05em" }}>
-                    ⭐ Most Chosen
-                  </div>
-                )}
-
-                {/* Top color band */}
-                <div style={{ height: "6px", backgroundColor: plan.popular ? C.terra : plan.color }} />
-
-                <div style={{ padding: "1.75rem", display: "flex", flexDirection: "column", flex: 1 }}>
-                  {/* Header */}
-                  <div style={{ marginBottom: "1.25rem" }}>
-                    <span style={{ fontSize: "2rem" }}>{plan.emoji}</span>
-                    <h3 style={{ ...serif, color: C[950], fontSize: "1.5rem", fontWeight: "700", marginTop: "0.5rem" }}>{plan.name} Plan</h3>
-                    <p style={{ color: plan.popular ? C.terra : C.primary, fontSize: "0.875rem", fontStyle: "italic", marginTop: "0.25rem" }}>{plan.tagline}</p>
-                  </div>
-
-                  {/* For who */}
-                  <div style={{ backgroundColor: plan.popular ? "rgba(200,169,106,0.08)" : C.cream, borderRadius: "10px", padding: "0.625rem 0.875rem", marginBottom: "1.25rem" }}>
-                    <p style={{ color: C[700], fontSize: "0.8rem", lineHeight: "1.5" }}><strong style={{ color: C[800] }}>For:</strong> {plan.forWho}</p>
-                  </div>
-
-                  {/* Price */}
-                  <div style={{ marginBottom: "1.25rem", padding: "1rem", backgroundColor: plan.popular ? "rgba(200,169,106,0.06)" : "rgba(22,56,50,0.03)", borderRadius: "12px", border: `1px dashed ${plan.popular ? C.terra : "#DAF1DE"}` }}>
-                    <p style={{ color: C[700], fontSize: "0.75rem", marginBottom: "0.25rem" }}>Starting from</p>
-                    <p style={{ ...serif, color: plan.popular ? C.terra : C[800], fontSize: "2rem", fontWeight: "700", lineHeight: 1 }}>₹ ___</p>
-                    <p style={{ color: C[700], fontSize: "0.75rem", marginTop: "0.25rem" }}>/ month &nbsp;·&nbsp; Save up to 20% annually</p>
-                  </div>
-
-                  {/* Included */}
-                  <p style={{ color: C[800], fontSize: "0.72rem", fontWeight: "700", letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: "0.625rem" }}>What's Included</p>
-                  <ul style={{ display: "flex", flexDirection: "column", gap: "0.45rem", marginBottom: "1.25rem" }}>
-                    {plan.included.map((item) => (
-                      <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.83rem", color: C[700], lineHeight: "1.55" }}>
-                        <span style={{ color: plan.popular ? C.terra : C[300], flexShrink: 0, marginTop: "1px", fontWeight: "700" }}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Excluded */}
-                  {plan.excluded.length > 0 && (
-                    <>
-                      <p style={{ color: "#999", fontSize: "0.72rem", fontWeight: "700", letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Not Included</p>
-                      <ul style={{ display: "flex", flexDirection: "column", gap: "0.35rem", marginBottom: "1.25rem" }}>
-                        {plan.excluded.map((item) => (
-                          <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.82rem", color: "#999", lineHeight: "1.5" }}>
-                            <span style={{ flexShrink: 0 }}>✕</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-
-                  {/* Best for */}
-                  <div style={{ backgroundColor: C.cream, borderRadius: "10px", padding: "0.75rem 0.875rem", marginBottom: "1.5rem", marginTop: "auto" }}>
-                    <p style={{ fontSize: "0.7rem", fontWeight: "700", color: C[700], textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.25rem" }}>Best For</p>
-                    <p style={{ fontSize: "0.82rem", color: C[700], lineHeight: "1.6" }}>{plan.bestFor}</p>
-                  </div>
-
-                  {/* CTA */}
-                  <Link href="/contact" style={{
-                    display: "block", textAlign: "center", padding: "0.875rem", borderRadius: "9999px",
-                    backgroundColor: plan.popular ? C.terra : "transparent",
-                    color: plan.popular ? "#fff" : C[800],
-                    border: plan.popular ? "none" : `2px solid ${C[800]}`,
-                    fontSize: "0.9rem", fontWeight: "700", textDecoration: "none",
-                    boxShadow: plan.popular ? "0 6px 20px rgba(200,169,106,0.3)" : "none",
-                  }}>
-                    {plan.cta} →
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
+          {activePlans.map((plan, i) => (
+            <PlanCardItem key={plan.id} plan={plan} i={i} />
           ))}
         </div>
       </div>
@@ -271,50 +400,108 @@ const tableRows = [
   { feature: "Member App Access", silver: "✅", gold: "✅", platinum: "✅" },
 ];
 
-function ComparisonTable() {
+const postpartumTableRows = [
+  { feature: "Postpartum Nurse", seedling: "Daytime, 5d/wk", bloom: "Daily, 6d/wk", flourish: "Daily + On-call" },
+  { feature: "Baby Nurse", seedling: "—", bloom: "✅ Included", flourish: "✅ 24/7" },
+  { feature: "Lactation Sessions", seedling: "2 sessions", bloom: "4 sessions", flourish: "Unlimited (6 wks)" },
+  { feature: "C-section Wound Care", seedling: "—", bloom: "✅", flourish: "✅" },
+  { feature: "Postnatal Nutrition Plan", seedling: "Guidance only", bloom: "Full plan", flourish: "Full + follow-up" },
+  { feature: "Mental Wellness Sessions", seedling: "—", bloom: "—", flourish: "4 sessions" },
+  { feature: "Postpartum Massage", seedling: "—", bloom: "—", flourish: "4 sessions" },
+  { feature: "Family Health Briefing", seedling: "—", bloom: "Weekly", flourish: "Weekly" },
+  { feature: "Dedicated Care Coordinator", seedling: "—", bloom: "—", flourish: "✅" },
+  { feature: "Partner Coaching", seedling: "—", bloom: "—", flourish: "✅ Included" },
+  { feature: "24/7 Emergency Helpline", seedling: "✅", bloom: "✅", flourish: "✅ Priority" },
+  { feature: "Package Duration", seedling: "2 Weeks", bloom: "4 Weeks", flourish: "6 Weeks" },
+];
+
+function ComparisonTable({ careTab }) {
+  const isPostpartum = careTab === "postpartum";
+
   return (
     <section style={{ backgroundColor: C.cream, padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <ScrollReveal animation="fadeUp">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ color: C.primary, fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Side by Side</p>
-            <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>Full Plan Comparison</h2>
+            <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
+              {isPostpartum ? "Postpartum Plan Comparison" : "Full Plan Comparison"}
+            </h2>
+            <p style={{ color: C[700], fontSize: "0.9rem", marginTop: "0.5rem" }}>
+              {isPostpartum ? "Seedling · Bloom · Flourish" : "Silver · Gold · Platinum"}
+            </p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal animation="scaleIn" duration={700}>
+        <ScrollReveal animation="scaleIn" duration={700} key={careTab}>
           <div style={{ overflowX: "auto", borderRadius: "20px", boxShadow: "0 4px 32px rgba(5,31,32,0.08)", border: "1px solid #DAF1DE" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", backgroundColor: "#fff", fontSize: "0.875rem" }}>
-              <thead>
-                <tr style={{ backgroundColor: C[900] }}>
-                  <th style={{ padding: "1.125rem 1.5rem", textAlign: "left", color: C[300], fontWeight: "600", fontSize: "0.8rem", letterSpacing: "0.05em" }}>Feature</th>
-                  {["🌱 Silver", "🌿 Gold", "💎 Platinum"].map((h, i) => (
-                    <th key={h} style={{ padding: "1.125rem 1.5rem", textAlign: "center", color: i === 1 ? C.terra : C[100], fontWeight: "700", fontSize: "0.9rem", position: "relative" }}>
-                      {h}
-                      {i === 1 && <div style={{ fontSize: "0.65rem", color: C.terra, marginTop: "0.2rem", letterSpacing: "0.05em" }}>MOST POPULAR</div>}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {tableRows.map((row, i) => (
-                  <tr key={row.feature} style={{ backgroundColor: i % 2 === 0 ? "#fff" : C.cream, borderBottom: "1px solid #DAF1DE" }}>
-                    <td style={{ padding: "1rem 1.5rem", color: C[800], fontWeight: "500" }}>{row.feature}</td>
-                    {[row.silver, row.gold, row.platinum].map((val, j) => (
-                      <td key={j} style={{ padding: "1rem 1.5rem", textAlign: "center", color: val === "—" ? "#ccc" : j === 1 ? C.terra : C[700], fontWeight: j === 1 ? "600" : "400" }}>{val}</td>
+            {isPostpartum ? (
+              /* ── Postpartum comparison table ── */
+              <table style={{ width: "100%", borderCollapse: "collapse", backgroundColor: "#fff", fontSize: "0.875rem" }}>
+                <thead>
+                  <tr style={{ backgroundColor: C[900] }}>
+                    <th style={{ padding: "1.125rem 1.5rem", textAlign: "left", color: C[300], fontWeight: "600", fontSize: "0.8rem", letterSpacing: "0.05em" }}>Feature</th>
+                    {["🌱 Seedling", "🌸 Bloom", "💫 Flourish"].map((h, i) => (
+                      <th key={h} style={{ padding: "1.125rem 1.5rem", textAlign: "center", color: i === 1 ? C.terra : C[100], fontWeight: "700", fontSize: "0.9rem" }}>
+                        {h}
+                        {i === 1 && <div style={{ fontSize: "0.65rem", color: C.terra, marginTop: "0.2rem", letterSpacing: "0.05em" }}>MOST CHOSEN</div>}
+                      </th>
                     ))}
                   </tr>
-                ))}
-                <tr style={{ backgroundColor: C[900] }}>
-                  <td style={{ padding: "1.125rem 1.5rem", color: C[300], fontWeight: "600" }}>Monthly Price</td>
-                  {["₹ ___", "₹ ___", "₹ ___"].map((p, i) => (
-                    <td key={i} style={{ padding: "1.125rem 1.5rem", textAlign: "center" }}>
-                      <span style={{ ...serif, color: i === 1 ? C.terra : C[100], fontSize: "1.2rem", fontWeight: "700" }}>{p}</span>
-                    </td>
+                </thead>
+                <tbody>
+                  {postpartumTableRows.map((row, i) => (
+                    <tr key={row.feature} style={{ backgroundColor: i % 2 === 0 ? "#fff" : C.cream, borderBottom: "1px solid #DAF1DE" }}>
+                      <td style={{ padding: "1rem 1.5rem", color: C[800], fontWeight: "500" }}>{row.feature}</td>
+                      {[row.seedling, row.bloom, row.flourish].map((val, j) => (
+                        <td key={j} style={{ padding: "1rem 1.5rem", textAlign: "center", color: val === "—" ? "#ccc" : j === 1 ? C.terra : C[700], fontWeight: j === 1 ? "600" : "400" }}>{val}</td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              </tbody>
-            </table>
+                  <tr style={{ backgroundColor: C[900] }}>
+                    <td style={{ padding: "1.125rem 1.5rem", color: C[300], fontWeight: "600" }}>Package Price</td>
+                    {["₹ ___", "₹ ___", "₹ ___"].map((p, i) => (
+                      <td key={i} style={{ padding: "1.125rem 1.5rem", textAlign: "center" }}>
+                        <span style={{ ...serif, color: i === 1 ? C.terra : C[100], fontSize: "1.2rem", fontWeight: "700" }}>{p}</span>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            ) : (
+              /* ── Elder care comparison table ── */
+              <table style={{ width: "100%", borderCollapse: "collapse", backgroundColor: "#fff", fontSize: "0.875rem" }}>
+                <thead>
+                  <tr style={{ backgroundColor: C[900] }}>
+                    <th style={{ padding: "1.125rem 1.5rem", textAlign: "left", color: C[300], fontWeight: "600", fontSize: "0.8rem", letterSpacing: "0.05em" }}>Feature</th>
+                    {["🌱 Silver", "🌿 Gold", "💎 Platinum"].map((h, i) => (
+                      <th key={h} style={{ padding: "1.125rem 1.5rem", textAlign: "center", color: i === 1 ? C.terra : C[100], fontWeight: "700", fontSize: "0.9rem", position: "relative" }}>
+                        {h}
+                        {i === 1 && <div style={{ fontSize: "0.65rem", color: C.terra, marginTop: "0.2rem", letterSpacing: "0.05em" }}>MOST POPULAR</div>}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableRows.map((row, i) => (
+                    <tr key={row.feature} style={{ backgroundColor: i % 2 === 0 ? "#fff" : C.cream, borderBottom: "1px solid #DAF1DE" }}>
+                      <td style={{ padding: "1rem 1.5rem", color: C[800], fontWeight: "500" }}>{row.feature}</td>
+                      {[row.silver, row.gold, row.platinum].map((val, j) => (
+                        <td key={j} style={{ padding: "1rem 1.5rem", textAlign: "center", color: val === "—" ? "#ccc" : j === 1 ? C.terra : C[700], fontWeight: j === 1 ? "600" : "400" }}>{val}</td>
+                      ))}
+                    </tr>
+                  ))}
+                  <tr style={{ backgroundColor: C[900] }}>
+                    <td style={{ padding: "1.125rem 1.5rem", color: C[300], fontWeight: "600" }}>Monthly Price</td>
+                    {["₹ ___", "₹ ___", "₹ ___"].map((p, i) => (
+                      <td key={i} style={{ padding: "1.125rem 1.5rem", textAlign: "center" }}>
+                        <span style={{ ...serif, color: i === 1 ? C.terra : C[100], fontSize: "1.2rem", fontWeight: "700" }}>{p}</span>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            )}
           </div>
         </ScrollReveal>
       </div>
@@ -334,6 +521,10 @@ const addons = [
   { icon: "📱", name: "Elder Tech Device Rental", price: "₹ __ per month" },
   { icon: "🚗", name: "Transportation Support", price: "₹ __ per trip" },
   { icon: "💆", name: "Physiotherapy Sessions", price: "₹ __ per session" },
+  { icon: "🤱", name: "Postpartum Nursing Package", price: "₹ __ per week" },
+  { icon: "🥛", name: "Lactation Consultant Session", price: "₹ __ per session" },
+  { icon: "🌸", name: "Postpartum Massage Therapy", price: "₹ __ per session" },
+  { icon: "👶", name: "Baby Nurse (Newborn Care)", price: "₹ __ per day" },
 ];
 
 function AddOns() {
@@ -346,7 +537,7 @@ function AddOns() {
             <h2 style={{ ...serif, color: C[100], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>Build Your Own Care — Top Up Any Plan</h2>
           </div>
           <p style={{ color: C[300], fontSize: "0.95rem", textAlign: "center", maxWidth: "560px", margin: "0.75rem auto 3rem", lineHeight: "1.75" }}>
-            Not everything fits neatly into a plan. That's why we offer add-ons — so you can customise care exactly to what your parent needs.
+            Not everything fits neatly into a plan. That's why we offer add-ons — for elder care and postpartum care alike — so you can customise exactly to what your family needs.
           </p>
         </ScrollReveal>
 
@@ -516,6 +707,8 @@ const faqs = [
   { q: "Do you serve my city?", a: "We're currently available across select cities and expanding fast — drop us your city and we'll let you know when we reach you." },
   { q: "What happens when I cancel?", a: "You can cancel anytime with 30 days notice. Your care continues until the end of your billing cycle." },
   { q: "Can I get a demo or trial before committing?", a: "Absolutely. Book a free 15-minute call with our Care Expert — and we offer a 7-day satisfaction guarantee on your first month." },
+  { q: "Do your plans cover postpartum and newborn care?", a: "Yes — postpartum mother care, newborn nursing, lactation support, and postpartum mental wellness are all available as add-ons to any plan. Speak to our Care Expert to build the right combination for your family." },
+  { q: "How soon can postpartum care begin after delivery?", a: "We can typically deploy a trained postpartum nurse within 24–48 hours of your request. We recommend booking in advance during your third trimester so everything is ready for when you return home." },
 ];
 
 function FAQ() {
@@ -598,12 +791,13 @@ function PlansCTA() {
    PAGE EXPORT
 ═══════════════════════════════════════ */
 export default function PlansPage() {
+  const [careTab, setCareTab] = useState("elder");
   return (
     <>
       <PlansHero />
       <HonestIntro />
-      <PlanCards />
-      <ComparisonTable />
+      <PlanCards careTab={careTab} setCareTab={setCareTab} />
+      <ComparisonTable careTab={careTab} />
       <AddOns />
       <BillingSection />
       <DecisionHelper />
