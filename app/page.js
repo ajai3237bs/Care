@@ -8,7 +8,17 @@ import Button from "./ui/Button";
 
 // Icon Import //
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSuitcaseMedical, faHeartPulse, faUserNurse, faPeopleArrows, faPersonBreastfeeding, faHouseMedical, faWheelchair, faChildren } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSuitcaseMedical,
+  faHeartPulse,
+  faUserNurse,
+  faPeopleArrows,
+  faPersonBreastfeeding,
+  faHouseMedical,
+  faWheelchair,
+  faChildren
+}
+  from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -212,56 +222,31 @@ const challenges = [
   {
     title: "Falls & Mobility",
     desc: "Reduced mobility can make everyday activities challenging and increase the risk of falls. Our caregivers provide gentle support, balance assistance, and guided movement to help seniors stay safe, confident, and independent at home.",
-    icon: (
-      <FontAwesomeIcon
-        icon={faWheelchair}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    icon: faWheelchair,
   },
   {
     title: "Chronic Conditions",
     desc: "Managing conditions like diabetes, heart disease, or arthritis requires consistent care and attention. Our caregivers support daily routines, monitor health needs, and stay connected with doctors to help seniors remain stable, comfortable, and well cared for at home.",
-    icon: (
-      <FontAwesomeIcon
-        icon={faHouseMedical}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
-  },
-  {
-    title: "Loneliness & Isolation",
-    desc: "Loneliness can impact overall well-being just as much as physical illness. Our companion care provides friendly support, meaningful interaction, and engaging activities to help seniors feel connected, valued, and mentally active every day.",
-    icon: (
-      <FontAwesomeIcon
-        icon={faPeopleArrows}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
-  },
-  {
-    title: "Distance from Children",
-    desc: "Being away from your parents can create constant concern and uncertainty. Celedon helps you stay reassured with regular updates, easy communication, and round-the-clock caregiver support—so you always feel connected, no matter the distance.",
-    icon: (
-      <FontAwesomeIcon
-        icon={faChildren}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    icon: faHouseMedical,
   },
   {
     title: "Postpartum Recovery",
     desc: "The weeks after childbirth can be physically exhausting and emotionally overwhelming. Our trained caregivers and newborn care specialists provide gentle support, helping new mothers rest, recover, and build a strong, confident bond with their baby.",
-    icon: (
-      <FontAwesomeIcon
-        icon={faPersonBreastfeeding}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    icon: faPersonBreastfeeding,
+  },
+  {
+    title: "Loneliness & Isolation",
+    desc: "Loneliness can impact overall well-being just as much as physical illness. Our companion care provides friendly support, meaningful interaction, and engaging activities to help seniors feel connected, valued, and mentally active every day.",
+    icon: faPeopleArrows,
+  },
+  {
+    title: "Distance from Children",
+    desc: "Being away from your parents can create constant concern and uncertainty. Celedon helps you stay reassured with regular updates, easy communication, and round-the-clock caregiver support—so you always feel connected, no matter the distance.",
+    icon: faChildren,
   },
 ];
 
-function ChallengesSection() {
+ function ChallengesSection() {
   return (
     <section
       style={{
@@ -272,7 +257,7 @@ function ChallengesSection() {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
           <p
             style={{
               color: "#6B8F71",
@@ -288,7 +273,6 @@ function ChallengesSection() {
 
           <h2
             style={{
-              ...serif,
               color: "#051F20",
               fontSize: "clamp(1.9rem, 3vw, 2.6rem)",
               fontWeight: "700",
@@ -301,24 +285,42 @@ function ChallengesSection() {
           </h2>
         </div>
 
-        {/* Cards */}
+        {/* Scroll Hint */}
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "0.85rem",
+            color: "#6B8F71",
+            marginBottom: "1.5rem",
+          }}
+        >
+          ← Swipe to explore →
+        </p>
+
+        {/* Horizontal Scroll */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1.75rem",
+            display: "flex",
+            gap: "1.5rem",
+            overflowX: "auto",
+            paddingBottom: "1rem",
+            scrollSnapType: "x mandatory",
           }}
+          className="hide-scrollbar"
         >
           {challenges.map(({ title, desc, icon }) => (
             <div
               key={title}
               style={{
+                minWidth: "280px",
+                maxWidth: "320px",
+                flex: "0 0 auto",
                 backgroundColor: "#FFFFFF",
                 borderRadius: "22px",
                 padding: "2rem",
                 border: "1px solid #E3EFE8",
                 boxShadow: "0 6px 24px rgba(35,83,71,0.08)",
-                transition: "all 0.25s ease",
+                scrollSnapAlign: "start",
               }}
             >
               {/* Icon */}
@@ -335,13 +337,12 @@ function ChallengesSection() {
                   marginBottom: "1.25rem",
                 }}
               >
-                {icon}
+                <FontAwesomeIcon icon={icon} style={{ fontSize: "26px" }} />
               </div>
 
               {/* Title */}
               <h3
                 style={{
-                  ...serif,
                   color: "#0B2B26",
                   fontSize: "1.25rem",
                   fontWeight: "700",
@@ -366,6 +367,17 @@ function ChallengesSection() {
           ))}
         </div>
       </div>
+
+      {/* Hide Scrollbar */}
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }
