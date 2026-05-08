@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -246,9 +246,72 @@ const challenges = [
   },
 ];
 
- function ChallengesSection() {
+function ChallengesSection() {
+  const sectionRef = useRef(null);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const scrollContainer = scrollRef.current;
+    if (!section || !scrollContainer) return;
+
+    let busy = false;
+
+    const handleWheel = (e) => {
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // How many pixels of the section are currently visible in the viewport
+      const visiblePx = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+      // Activate when section covers at least 70% of the viewport
+      if (visiblePx < vh * 0.7) return;
+
+      // Always block page scroll while section is active
+      e.preventDefault();
+      if (busy) return;
+
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+      const maxScroll = scrollWidth - clientWidth;
+      const atStart = scrollLeft <= 2;
+      const atEnd = scrollLeft >= maxScroll - 2;
+      const goingDown = e.deltaY > 0;
+      const goingUp = e.deltaY < 0;
+
+      busy = true;
+
+      if (goingDown && !atEnd) {
+        // Scroll next card into view
+        scrollContainer.scrollBy({ left: 304, behavior: "smooth" });
+        setTimeout(() => { busy = false; }, 500);
+      } else if (goingUp && !atStart) {
+        // Scroll previous card into view
+        scrollContainer.scrollBy({ left: -304, behavior: "smooth" });
+        setTimeout(() => { busy = false; }, 500);
+      } else if (goingDown && atEnd) {
+        // All cards done — jump to next section
+        const next = section.nextElementSibling;
+        if (next) next.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { busy = false; }, 900);
+      } else if (goingUp && atStart) {
+        // Back at first card — jump to previous section
+        const prev = section.previousElementSibling;
+        if (prev) prev.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { busy = false; }, 900);
+      } else {
+        busy = false;
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       style={{
         backgroundColor: "#FAFDFB",
         padding: "5.5rem 1.5rem",
@@ -299,6 +362,7 @@ const challenges = [
 
         {/* Horizontal Scroll */}
         <div
+          ref={scrollRef}
           style={{
             display: "flex",
             gap: "1.5rem",
