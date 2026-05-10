@@ -18,7 +18,7 @@ const serif = { fontFamily: "var(--font-lora)" };
 ═══════════════════════════════════════ */
 function ContactHero() {
   return (
-    <section style={{ background: `linear-gradient(135deg, ${C[950]} 0%, ${C[800]} 55%, ${C[700]} 100%)`, position: "relative", overflow: "hidden", minHeight: "360px", display: "flex", alignItems: "center" }}>
+    <section style={{ background: `linear-gradient(135deg, ${C[950]} 0%, ${C[800]} 55%, ${C[700]} 100%)`, position: "relative", overflow: "hidden", minHeight: "640px", display: "flex", alignItems: "center" }}>
       <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "360px", height: "360px", borderRadius: "50%", backgroundColor: C[700], opacity: 0.2 }} />
       <div style={{ position: "absolute", bottom: "-60px", left: "-40px", width: "240px", height: "240px", borderRadius: "50%", backgroundColor: C.terra, opacity: 0.07 }} />
 

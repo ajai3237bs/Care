@@ -31,7 +31,7 @@ function AboutHero() {
       backgroundPosition: "center top",
       position: "relative",
       overflow: "hidden",
-      minHeight: "560px",
+      minHeight: "640px",
       display: "flex",
       alignItems: "center",
     }}>

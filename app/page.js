@@ -357,7 +357,7 @@ function ChallengesSection() {
             marginBottom: "1.5rem",
           }}
         >
-          ← Swipe to explore →
+          ← Scroll to explore →
         </p>
 
         {/* Horizontal Scroll */}

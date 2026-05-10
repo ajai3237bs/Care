@@ -18,7 +18,7 @@ const serif = { fontFamily: "var(--font-lora)" };
 ═══════════════════════════════════════ */
 function PlansHero() {
   return (
-    <section style={{ background: `linear-gradient(135deg, ${C[950]} 0%, ${C[800]} 55%, ${C[700]} 100%)`, position: "relative", overflow: "hidden", minHeight: "420px", display: "flex", alignItems: "center" }}>
+    <section style={{ background: `linear-gradient(135deg, ${C[950]} 0%, ${C[800]} 55%, ${C[700]} 100%)`, position: "relative", overflow: "hidden", minHeight: "640px", display: "flex", alignItems: "center" }}>
       <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "400px", height: "400px", borderRadius: "50%", backgroundColor: C[700], opacity: 0.2 }} />
       <div style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "280px", height: "280px", borderRadius: "50%", backgroundColor: C.terra, opacity: 0.08 }} />
 
