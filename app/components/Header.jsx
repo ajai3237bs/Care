@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
+  // { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
   { href: "/plans", label: "Plans" },
 ];
@@ -99,12 +99,12 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button href="/contact" variant="ghost" size="lg" showArrow={false}>
+            <Button href="/contact" variant="ghost" size="md" showArrow={false}>
               Talk To Us
             </Button>
 
             <Button
-              href="/authentication/login" size="lg" className="bg-[#C8A96A] hover:bg-[#b89655]" showArrow={false}>
+              href="/authentication/login" size="md" className="bg-[#C8A96A] hover:bg-[#b89655]" showArrow={false}>
               Login
             </Button>
           </div>
@@ -153,7 +153,7 @@ export default function Header() {
             <div className="pt-4 flex flex-col gap-3">
               <Button
                 href="/contact"
-                variant="secondary"
+                variant="primary"
                 size="sm"
                 showArrow={false}
                 className="w-full"
@@ -164,6 +164,7 @@ export default function Header() {
 
               <Button
                 href="/plans"
+                variant="primary"
                 size="sm"
                 className="w-full bg-[#C8A96A] hover:bg-[#b89655]"
                 onClick={() => setOpen(false)}

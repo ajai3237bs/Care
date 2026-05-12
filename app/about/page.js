@@ -1,8 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import React, { useState } from 'react';
+
 
 
 /* ─── Design Tokens ─── */
@@ -38,25 +41,13 @@ function AboutHero() {
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,31,32,0.93) 0%, rgba(5,31,32,0.78) 55%, rgba(5,31,32,0.35) 100%)" }} />
 
       <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", padding: "10rem 1.5rem 5rem", width: "100%" }}>
-        <ScrollReveal animation="fadeUp" delay={0} duration={700}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", backgroundColor: "rgba(142,182,155,0.15)", border: "1px solid rgba(142,182,155,0.3)", color: C[300], padding: "0.375rem 1rem", borderRadius: "9999px", fontSize: "0.8rem", fontWeight: "500", marginBottom: "1.5rem" }}>
-            <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: C.terra, display: "inline-block" }} />
-            Our Story
-          </div>
-        </ScrollReveal>
 
         <ScrollReveal animation="fadeUp" delay={120} duration={750}>
           <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2rem,5vw,3.2rem)", fontWeight: "700", lineHeight: "1.2", maxWidth: "640px", marginBottom: "1.25rem", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
-            Supporting Every Generation —{" "}
-            <span style={{ color: C.terra }}>Elders, New Mothers & Newborns</span>
+            Who We Are,  {" "}
+            <span style={{ color: C.terra }}>Why We Are</span>
           </h1>
         </ScrollReveal>
-
-        {/* <ScrollReveal animation="fadeUp" delay={260} duration={750}>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", lineHeight: "1.8", maxWidth: "520px", textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}>
-            Like you, we've worried about a parent alone at home. That worry became our purpose.
-          </p>
-        </ScrollReveal> */}
       </div>
     </section>
   );
@@ -80,10 +71,10 @@ function OurStory() {
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                 {[
-                  "Celedon was born out of a personal moment — watching a parent struggle to get the care they deserved, while family members were miles away, helpless.",
-                  "We looked around and saw the same story repeating in thousands of Indian families. Quality elder care existed — but it was fragmented, hard to access, and rarely felt human.",
-                  "As we grew, we heard another story just as often — new mothers sent home after delivery with little support, exhausted and overwhelmed. So we expanded Celedon to include postpartum and newborn care too.",
-                  "Today, Celedon serves two of life's most important transitions — ageing with dignity, and new parenthood with confidence. Both deserve the same warmth, expertise, and care.",
+                  "Celedon began from a deeply personal moment watching our own parents struggle to receive the care they truly deserved, while we stood far away, helpless and worried",
+                  "As we looked around, we realized this wasn’t just our story. It was the story of countless Malayali families where ageing parents are left alone, and finding reliable, compassionate care feels difficult and uncertain",
+                  "With time, we heard another heartfelt concern from many homes new mothers returning after delivery, tired, anxious, and without the support they truly needed. Thats when we knew our care had to extend beyond elders, to mothers and newborns as well",
+                  "Today, Celedon stands beside families during two of lifes most meaningful journeys helping our elders age with dignity, and supporting new parents with confidence and care. Because in Kerala, family means everything… and no one should ever feel alone in these moments"
                 ].map((p, i) => (
                   <p key={i} style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>{p}</p>
                 ))}
@@ -104,7 +95,7 @@ function OurStory() {
                   "Care should never feel institutional. Home is where healing happens."
                 </p>
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1.25rem", display: "flex", gap: "2rem" }}>
-                  {[{ n: "2024", l: "Founded" }, { n: "7-Day", l: "Guarantee" }, { n: "100%", l: "Verified Care" }].map(({ n, l }) => (
+                  {[{ n: "2026", l: "Founded" }, { n: "7-Day", l: "Guarantee" }, { n: "100%", l: "Verified Care" }].map(({ n, l }) => (
                     <div key={l}>
                       <p style={{ ...serif, color: C.terra, fontSize: "1.5rem", fontWeight: "700" }}>{n}</p>
                       <p style={{ color: C[300], fontSize: "0.75rem", marginTop: "0.2rem" }}>{l}</p>
@@ -154,10 +145,10 @@ function MissionVision() {
               </div>
               <p style={{ color: C.terra, fontSize: "0.75rem", fontWeight: "700", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Our Mission</p>
               <p style={{ ...serif, color: C[100], fontSize: "1.15rem", fontWeight: "700", lineHeight: 1.5, marginBottom: "1rem" }}>
-                To make every important life transition — ageing and new parenthood — a dignified, supported, and joyful experience.
+                To make every important life transition ageing and new parenthood a dignified, supported, and joyful experience.
               </p>
               <p style={{ color: C[300], fontSize: "0.9rem", lineHeight: "1.75" }}>
-                Starting right at home — because that's where every generation feels safest, most loved, and most like themselves.
+                Starting right at home because that's where every generation feels safest, most loved, and most like themselves.
               </p>
             </div>
           </ScrollReveal>
@@ -173,10 +164,10 @@ function MissionVision() {
               </div>
               <p style={{ color: C[300], fontSize: "0.75rem", fontWeight: "700", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Our Vision</p>
               <p style={{ ...serif, color: C[100], fontSize: "1.15rem", fontWeight: "700", lineHeight: 1.5, marginBottom: "1rem" }}>
-                Every Indian family — seniors, new mothers, and newborns — has access to expert, compassionate home care.
+                Every Indian family seniors, new mothers, and newborns has access to expert, compassionate home care.
               </p>
               <p style={{ color: C[300], fontSize: "0.9rem", lineHeight: "1.75" }}>
-                A future where quality care at home isn't a privilege — it's the standard for every generation.
+                A future where quality care at home isn't a privilege it's the standard for every generation.
               </p>
             </div>
           </ScrollReveal>
@@ -186,132 +177,92 @@ function MissionVision() {
   );
 }
 
-/* ═══════════════════════════════════════
-   SECTION 4 — VALUES
-═══════════════════════════════════════ */
-const values = [
-  { emoji: "💚", title: "People over process", desc: "Every senior is a person, not a case file. We treat them as we'd treat our own family." },
-  { emoji: "🏠", title: "Home is sacred", desc: "Care should never feel institutional. Comfort, familiarity, and warmth matter as much as medicine." },
-  { emoji: "🤝", title: "Family stays in the loop", desc: "No parent should feel alone. No child should feel helpless. We keep everyone connected." },
-  { emoji: "📈", title: "Always improving", desc: "We move fast and learn from every family we serve. Each care plan makes us sharper and more thoughtful." },
-  { emoji: "❤️", title: "Empathy first", desc: "Every decision starts with one question: how does this feel for the senior?" },
-];
 
-function ValuesSection() {
-  return (
-    <section style={{ backgroundColor: "#fff", padding: "5rem 1.5rem" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <ScrollReveal animation="fadeUp" duration={650}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ color: C.primary, fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>What We Stand For</p>
-            <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
-              A Few Things We'll Never Compromise On
-            </h2>
-          </div>
-        </ScrollReveal>
+//SECTION 4 — Founders//
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.25rem" }}>
-          {values.map(({ emoji, title, desc }, i) => (
-            <ScrollReveal key={title} animation="scaleIn" delay={i * 90} duration={600}>
-              <div style={{ backgroundColor: C.cream, borderRadius: "20px", padding: "1.875rem", border: "1px solid #DAF1DE", height: "100%" }}>
-                <div style={{ fontSize: "2rem", marginBottom: "1rem", lineHeight: 1 }}>{emoji}</div>
-                <h3 style={{ ...serif, color: C[900], fontSize: "1rem", fontWeight: "700", marginBottom: "0.625rem" }}>{title}</h3>
-                <p style={{ color: C[700], fontSize: "0.875rem", lineHeight: "1.7" }}>{desc}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+// const founders = [
+//   {
+//     name: "Arjun Mehta",
+//     title: "Co-Founder & CEO",
+//     initials: "AM",
+//     note: "I started Celedon after spending six months coordinating my father's care from Bangalore while he was in Lucknow. I knew every family shouldn't have to go through that alone.",
+//     color: C[800],
+//   },
+//   {
+//     name: "Nisha Iyer",
+//     title: "Co-Founder & Head of Care",
+//     initials: "NI",
+//     note: "I started Celedon because I spent years as a geriatric nurse watching brilliant elders fade — not from illness, but from loneliness. That had to change.",
+//     color: C[700],
+//   },
+// ];
 
-/* ═══════════════════════════════════════
-   SECTION 5 — FOUNDERS
-═══════════════════════════════════════ */
-const founders = [
-  {
-    name: "Arjun Mehta",
-    title: "Co-Founder & CEO",
-    initials: "AM",
-    note: "I started Celedon after spending six months coordinating my father's care from Bangalore while he was in Lucknow. I knew every family shouldn't have to go through that alone.",
-    color: C[800],
-  },
-  {
-    name: "Nisha Iyer",
-    title: "Co-Founder & Head of Care",
-    initials: "NI",
-    note: "I started Celedon because I spent years as a geriatric nurse watching brilliant elders fade — not from illness, but from loneliness. That had to change.",
-    color: C[700],
-  },
-];
+// function FoundersSection() {
+//   return (
+//     <section style={{ backgroundColor: C.cream, padding: "5rem 1.5rem" }}>
+//       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+//         <ScrollReveal animation="fadeUp" duration={650}>
+//           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+//             <p style={{ color: C.terra, fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>The People Behind Celedon</p>
+//             <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
+//               Meet the Founders
+//             </h2>
+//             <p style={{ color: C[700], fontSize: "0.95rem", marginTop: "0.75rem", maxWidth: "480px", margin: "0.75rem auto 0" }}>
+//               Real people, real motivation. This is who you're trusting when you choose Celedon.
+//             </p>
+//           </div>
+//         </ScrollReveal>
 
-function FoundersSection() {
-  return (
-    <section style={{ backgroundColor: C.cream, padding: "5rem 1.5rem" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <ScrollReveal animation="fadeUp" duration={650}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ color: C.terra, fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>The People Behind Celedon</p>
-            <h2 style={{ ...serif, color: C[950], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
-              Meet the Founders
-            </h2>
-            <p style={{ color: C[700], fontSize: "0.95rem", marginTop: "0.75rem", maxWidth: "480px", margin: "0.75rem auto 0" }}>
-              Real people, real motivation. This is who you're trusting when you choose Celedon.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
-          {founders.map(({ name, title, initials, note, color }, i) => (
-            <ScrollReveal key={name} animation="fadeUp" delay={i * 140} duration={680}>
-              <div style={{ backgroundColor: "#fff", borderRadius: "22px", padding: "2.25rem", boxShadow: "0 4px 24px rgba(22,56,50,0.08)", border: "1px solid rgba(142,182,155,0.2)", maxWidth: "360px", width: "100%", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                  <div style={{ width: "64px", height: "64px", borderRadius: "50%", backgroundColor: color, color: C[100], display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", fontWeight: "700", flexShrink: 0 }}>
-                    {initials}
-                  </div>
-                  <div>
-                    <p style={{ ...serif, color: C[900], fontSize: "1rem", fontWeight: "700" }}>{name}</p>
-                    <p style={{ color: C.primary, fontSize: "0.8rem", marginTop: "0.2rem" }}>{title}</p>
-                  </div>
-                </div>
-                <div style={{ color: C[300], opacity: 0.4 }}>
-                  <svg width="24" height="18" viewBox="0 0 36 28" fill="currentColor">
-                    <path d="M0 28V17C0 6.333 5.333 1 16 0l2 3C12.667 4.333 10 6.667 9 10h8v18H0zm20 0V17C20 6.333 25.333 1 36 0l2 3C32.667 4.333 30 6.667 29 10h8v18H20z" />
-                  </svg>
-                </div>
-                <p style={{ color: C[700], fontSize: "0.9rem", lineHeight: "1.8", fontStyle: "italic", flex: 1 }}>{note}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
+//           {founders.map(({ name, title, initials, note, color }, i) => (
+//             <ScrollReveal key={name} animation="fadeUp" delay={i * 140} duration={680}>
+//               <div style={{ backgroundColor: "#fff", borderRadius: "22px", padding: "2.25rem", boxShadow: "0 4px 24px rgba(22,56,50,0.08)", border: "1px solid rgba(142,182,155,0.2)", maxWidth: "360px", width: "100%", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+//                 <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+//                   <div style={{ width: "64px", height: "64px", borderRadius: "50%", backgroundColor: color, color: C[100], display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", fontWeight: "700", flexShrink: 0 }}>
+//                     {initials}
+//                   </div>
+//                   <div>
+//                     <p style={{ ...serif, color: C[900], fontSize: "1rem", fontWeight: "700" }}>{name}</p>
+//                     <p style={{ color: C.primary, fontSize: "0.8rem", marginTop: "0.2rem" }}>{title}</p>
+//                   </div>
+//                 </div>
+//                 <div style={{ color: C[300], opacity: 0.4 }}>
+//                   <svg width="24" height="18" viewBox="0 0 36 28" fill="currentColor">
+//                     <path d="M0 28V17C0 6.333 5.333 1 16 0l2 3C12.667 4.333 10 6.667 9 10h8v18H0zm20 0V17C20 6.333 25.333 1 36 0l2 3C32.667 4.333 30 6.667 29 10h8v18H20z" />
+//                   </svg>
+//                 </div>
+//                 <p style={{ color: C[700], fontSize: "0.9rem", lineHeight: "1.8", fontStyle: "italic", flex: 1 }}>{note}</p>
+//               </div>
+//             </ScrollReveal>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ═══════════════════════════════════════
    SECTION 6 — WHERE WE ARE TODAY
 ═══════════════════════════════════════ */
 function TodaySection() {
   return (
-    <section style={{ backgroundColor: C[900], padding: "5rem 1.5rem" }}>
+    <section style={{ backgroundColor: C.cream, padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="today-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
 
           <ScrollReveal animation="fadeLeft" duration={700}>
             <div>
               <p style={{ color: C.terra, fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Honest &amp; Grounded</p>
-              <h2 style={{ ...serif, color: C[100], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700", marginBottom: "1.25rem" }}>
-                We're Early. And That's{" "}
-                <span style={{ color: C.terra }}>Exciting.</span>
+              <h2 style={{ ...serif, color: C[900], fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700", marginBottom: "1.25rem" }}>
+                We are Early. And That's{" "}
+                <span style={{ color: C[900] }}>Exciting.</span>
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                <p style={{ color: C[300], fontSize: "0.95rem", lineHeight: "1.8" }}>
+                <p style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>
                   Celedon is a young company with a big heart. We're currently serving families across India and growing every month. Every member we serve makes us sharper, more thoughtful, and more committed to our mission.
                 </p>
-                <p style={{ color: C[300], fontSize: "0.95rem", lineHeight: "1.8" }}>
-                  We don't have decades of history — but we have something more important right now: <strong style={{ color: C[100] }}>full focus, genuine care, and the drive to get this right.</strong>
+                <p style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>
+                  We don't have decades of history but we have something more important right now: <strong style={{ color: C[700] }}>full focus, genuine care, and the drive to get this right.</strong>
                 </p>
               </div>
             </div>
@@ -319,16 +270,15 @@ function TodaySection() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {[
-              { icon: "📍", label: "Serving families across India", sub: "And expanding every month" },
-              { icon: "⭐", label: "7-day satisfaction guarantee", sub: "We stand behind every care plan we deliver" },
-              { icon: "🚀", label: "Launched in 2024", sub: "Fresh eyes on an old problem" },
-            ].map(({ icon, label, sub }, i) => (
+              { label: "Serving families across Kerala's", sub: "And expanding every month" },
+              { label: "7-day satisfaction guarantee", sub: "We stand behind every care plan we deliver" },
+              { label: "Launched in 2026", sub: "Fresh eyes on an old problem" },
+            ].map(({ label, sub }, i) => (
               <ScrollReveal key={label} animation="fadeRight" delay={i * 110} duration={650}>
                 <div style={{ backgroundColor: C[800], borderRadius: "16px", padding: "1.25rem 1.5rem", border: "1px solid rgba(142,182,155,0.12)", display: "flex", alignItems: "center", gap: "1rem" }}>
-                  <span style={{ fontSize: "1.5rem", flexShrink: 0 }}>{icon}</span>
                   <div>
                     <p style={{ color: C[100], fontSize: "0.9rem", fontWeight: "600" }}>{label}</p>
-                    <p style={{ color: C[300], fontSize: "0.8rem", marginTop: "0.2rem" }}>{sub}</p>
+                    <p style={{ color: C.terra, fontSize: "0.8rem", marginTop: "0.2rem" }}>{sub}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -365,7 +315,7 @@ function AboutCTA() {
             Care Enough to Join Us?
           </h2>
           <p style={{ color: C[100], opacity: 0.85, fontSize: "1rem", lineHeight: "1.7", marginBottom: "2.5rem" }}>
-            Whether you're a family looking for care, or a professional who believes in our mission — there's a place for you here.
+            Whether you are a family looking for care, or a professional who believes in our mission there's a place for you here.
           </p>
         </ScrollReveal>
 
@@ -375,9 +325,7 @@ function AboutCTA() {
               Explore Care Plans
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
-            <Link href="/contact" style={{ color: "#fff", border: "2px solid rgba(255,255,255,0.45)", padding: "1rem 2.25rem", borderRadius: "9999px", fontSize: "1rem", fontWeight: "600", textDecoration: "none" }}>
-              Work With Us
-            </Link>
+          
           </div>
         </ScrollReveal>
       </div>
@@ -394,8 +342,7 @@ export default function AboutPage() {
       <AboutHero />
       <OurStory />
       <MissionVision />
-      <ValuesSection />
-      <FoundersSection />
+      {/* <FoundersSection /> */}
       <TodaySection />
       <AboutCTA />
       <Footer />
