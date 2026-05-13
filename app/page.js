@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -19,6 +19,8 @@ import {
   faChildren
 }
   from "@fortawesome/free-solid-svg-icons";
+import RegisterModal from './components/RegisterForm';
+import Image from 'next/image';
 
 
 
@@ -51,6 +53,7 @@ function CheckIcon({ color = "#8EB69B" }) {
 // SECTION 1 — HERO //
 
 function HeroSection() {
+  const [open, setOpen] = useState(false);
   return (
     <section style={{ backgroundImage: `url('/asset/banner4.png')`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "center" }}>
       {/* Dark overlay — solid left, fades right */}
@@ -69,7 +72,13 @@ function HeroSection() {
               {" "}They Truly Deserve
             </h1>
             {/* Button Component */}
-            <Button href="/plans">Explore Plans</Button>
+            <>
+              <Button onOpen={() => setOpen(true)}>
+                Get Started
+              </Button>
+              {/* Modal */}
+              {open && <RegisterModal onClose={() => setOpen(false)} />}
+            </>
           </div>
 
           {/* Right: Visual card */}
@@ -85,9 +94,58 @@ function HeroSection() {
     </section>
   );
 }
+// SECTION 2 — ABOUT //
+
+function AboutSection() {
+  return (
+    <section className="bg-gradient-to-br from-[#EAF5F1] via-[#f5fbf8] to-[#ffffff] py-16 px-4 md:px-12">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+
+        {/* Image */}
+        <div className="relative w-full h-[350px] md:h-[420px] rounded-2xl overflow-hidden shadow-md">
+          <Image
+            src="/asset/aboutbanner.png"
+            alt="Elder care"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Content */}
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B2B26] mb-3">
+            What is Celedon?
+          </h2>
+
+          <p className="text-lg text-gray-700 font-medium mb-4">
+            Your extended family
+          </p>
+
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Celedon is a home based care platform that supports
+            elderly parents and new mothers with reliable,
+            compassionate, and verified assistance.
+            We help families manage care remotely through trained
+            caregivers, nurses, monitoring, reminders, and emergency
+            support.
+          </p>
+
+          <p className="text-gray-600 leading-relaxed mb-6">
+            To make home care trusted, accessible, and emotionally
+            reassuring for every family.
+          </p>
+
+          <Button href="/about" size="md">
+            Learn More
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 
-//  SECTION 2 — TRUST BAR //
+//  SECTION 3 — TRUST BAR //
 
 const trustPillars = [
   {
@@ -142,7 +200,7 @@ function TrustBar() {
   return (
     <section
       style={{
-        backgroundColor: "#EAF5F1",
+        background: "linear-gradient(135deg, #f8f8f8 0%, #f3fffa 60%, #ffffff 100%)",
         padding: "4.5rem 1.5rem",
       }}
     >
@@ -216,7 +274,7 @@ function TrustBar() {
 }
 
 
-//  SECTION 3 — CHALLENGES //
+//  SECTION 4 — CHALLENGES //
 
 const challenges = [
   {
@@ -311,10 +369,9 @@ function ChallengesSection() {
 
   return (
     <section
-      ref={sectionRef}
       style={{
-        backgroundColor: "#FAFDFB",
-        padding: "5.5rem 1.5rem",
+        background: "linear-gradient(135deg, #f8f8f8 0%, #ecf8f3 60%, #ffffff 100%)",
+        padding: "4.5rem 1.5rem",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -446,67 +503,7 @@ function ChallengesSection() {
   );
 }
 
-// SECTION 4 — HOW CELEDON HELPS //
-const services = [
-  {
-    title: "Health & Medical",
-    desc: "Certified nurses and health aides for medication management, vitals monitoring, wound care, and coordination with your senior's doctors.",
-    points: ["Medication reminders", "Vitals tracking", "Doctor liaison", "Post-hospital care"],
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32"><path d="M22 12h-4l-3 9L9 3l-3 9H2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-  },
-  {
-    title: "Companionship & Activities",
-    desc: "Trained companions who bring genuine warmth — conversations, games, outings, hobbies, and mental wellness tailored to each senior.",
-    points: ["Daily engagement", "Mental wellness", "Social outings", "Hobby support"],
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg>,
-  },
-  {
-    title: "Safety & Emergency",
-    desc: "24/7 emergency response, fall-detection support, smart home safety assessments, and instant family notifications — always there.",
-    points: ["24/7 helpline", "Emergency dispatch", "Family updates", "Home safety checks"],
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>,
-  },
-  {
-    title: "Postpartum Support",
-    desc: "Trained postpartum nurses and newborn care specialists for new mothers — covering recovery, lactation, baby care, and mental wellness through every step.",
-    points: ["Mother recovery care", "Newborn nursing", "Lactation guidance", "Postpartum wellness"],
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg>,
-  },
-];
 
-function ServicesSection() {
-  return (
-    <section style={{ backgroundColor: "#DAF1DE", padding: "5rem 1.5rem" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={{ color: "#6B8F71", fontSize: "0.8rem", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>How We Help</p>
-          <h2 style={{ ...serif, color: "#051F20", fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: "700" }}>
-            Holistic Care, For Every Generation
-          </h2>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
-          {services.map(({ title, desc, points, icon }) => (
-            <div key={title} style={{ backgroundColor: "#fff", borderRadius: "22px", padding: "2rem", boxShadow: "0 4px 24px rgba(22,56,50,0.08)" }}>
-              <div style={{ width: "60px", height: "60px", borderRadius: "16px", backgroundColor: "#163832", color: "#8EB69B", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
-                {icon}
-              </div>
-              <h3 style={{ ...serif, color: "#0B2B26", fontSize: "1.2rem", fontWeight: "700", marginBottom: "0.75rem" }}>{title}</h3>
-              <p style={{ color: "#235347", fontSize: "0.875rem", lineHeight: "1.7", marginBottom: "1.25rem" }}>{desc}</p>
-              <ul style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                {points.map((p) => (
-                  <li key={p} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <CheckIcon />
-                    <span style={{ color: "#163832", fontSize: "0.85rem", fontWeight: "500" }}>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 //  SECTION 5 — WHY CHOOSE CELEDON  //
 const whyPoints = [
@@ -550,8 +547,8 @@ function WhyChooseSection() {
               ))}
             </ul>
             <div style={{ marginTop: "2rem" }}>
-              <Link href="/about" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "#8EB69B", fontSize: "0.9rem", fontWeight: "600", textDecoration: "none", borderBottom: "2px solid #6B8F71", paddingBottom: "2px" }}>
-                Learn More About Us
+              <Link href="/services" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "#8EB69B", fontSize: "0.9rem", fontWeight: "600", textDecoration: "none", borderBottom: "2px solid #6B8F71", paddingBottom: "2px" }}>
+                Explore Our Approach
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
             </div>
@@ -657,9 +654,9 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <AboutSection />
       <TrustBar />
       <ChallengesSection />
-      <ServicesSection />
       <WhyChooseSection />
       <PromisesSection />
       <Footer />

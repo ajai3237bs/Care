@@ -7,6 +7,7 @@ export default function Button({
   children = "Button",
   href,
   onClick,
+  onOpen, // 👈 NEW (modal trigger)
   type = "button",
   variant = "primary",
   size = "md",
@@ -15,11 +16,9 @@ export default function Button({
   loading = false,
   className = "",
 }) {
-  // Base styles
   const base =
     "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#C8A96A]/40";
 
-  // Variants
   const variants = {
     primary:
       "bg-[#D4A373] text-white shadow-[0_4px_20px_rgba(212,149,106,0.45)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(212,149,106,0.6)] active:scale-95",
@@ -28,14 +27,12 @@ export default function Button({
     ghost: "text-[#8EB69B] hover:text-[#D4A373]",
   };
 
-  // Sizes
   const sizes = {
     sm: "px-4 py-2 text-xs",
     md: "px-7 py-3 text-sm",
     lg: "px-9 py-4 text-base",
   };
 
-  // Disabled / loading state
   const stateStyles =
     disabled || loading
       ? "opacity-60 cursor-not-allowed pointer-events-none"
@@ -49,14 +46,25 @@ export default function Button({
     className
   );
 
+  // ✅ Unified click handler
+  const handleClick = (e) => {
+    if (disabled || loading) return;
+
+    if (onOpen) {
+      e.preventDefault();
+      onOpen();
+      return;
+    }
+
+    if (onClick) onClick(e);
+  };
+
   const content = (
     <>
-      {/* Shine effect (only for primary) */}
       {variant === "primary" && (
         <span className="pointer-events-none absolute left-[-75%] top-0 h-full w-1/2 bg-white/30 blur-md transition-all duration-700 ease-in-out group-hover:left-[125%]" />
       )}
 
-      {/* Content */}
       {loading ? (
         <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
       ) : (
@@ -85,20 +93,25 @@ export default function Button({
     </>
   );
 
-  // Link version
+  // ✅ Link version (still works)
   if (href) {
     return (
-      <Link href={href} className={classes} aria-disabled={disabled}>
+      <Link
+        href={href}
+        onClick={handleClick}
+        className={classes}
+        aria-disabled={disabled}
+      >
         {content}
       </Link>
     );
   }
 
-  // Button version
+  // ✅ Button version
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled || loading}
       className={classes}
     >
