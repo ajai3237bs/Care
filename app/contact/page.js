@@ -233,32 +233,19 @@ function ContactForm() {
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
                   {field("city", "Your City *", "text", "e.g. Bengaluru")}
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                    <label style={{ color: C[800], fontSize: "0.82rem", fontWeight: "600" }}>Plan of Interest</label>
+                    <label style={{ color: C[800], fontSize: "0.82rem", fontWeight: "600" }}>Select Your Service</label>
                     <select
                       value={form.plan}
                       onChange={(e) => setForm({ ...form, plan: e.target.value })}
                       style={{ padding: "0.75rem 1rem", borderRadius: "10px", border: "1px solid #DAF1DE", backgroundColor: "#fff", color: C[700], fontSize: "0.9rem", fontFamily: "inherit", outline: "none" }}
                     >
                       <option value="">Not sure yet</option>
-                      <option value="silver">🌱 Silver Plan</option>
-                      <option value="gold">🌿 Gold Plan</option>
-                      <option value="platinum">💎 Platinum Plan</option>
-                      <option value="addon">Just an Add-on</option>
+                      <option value="elder-care">🧓 Elder Care</option>
+                      <option value="postpartum">🤱 Postpartum Care</option>
                     </select>
                   </div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                  <label style={{ color: C[800], fontSize: "0.82rem", fontWeight: "600" }}>Parent's Health Condition (optional)</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Diabetes, hypertension, post-surgery recovery..."
-                    value={form.condition}
-                    onChange={(e) => setForm({ ...form, condition: e.target.value })}
-                    style={{ padding: "0.75rem 1rem", borderRadius: "10px", border: "1px solid #DAF1DE", backgroundColor: "#fff", color: C[800], fontSize: "0.9rem", fontFamily: "inherit", outline: "none" }}
-                    onFocus={(e) => (e.target.style.borderColor = C[300])}
-                    onBlur={(e) => (e.target.style.borderColor = "#DAF1DE")}
-                  />
-                </div>
+               
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                   <label style={{ color: C[800], fontSize: "0.82rem", fontWeight: "600" }}>Your Message *</label>
                   <textarea

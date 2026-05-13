@@ -1,4 +1,7 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
+import PolicyModal from "./PolicyModal";
 
 const services = [
   "Home Health Care",
@@ -54,6 +57,14 @@ function LeafLogo() {
 }
 
 export default function Footer() {
+  const [modal, setModal] = useState(null);
+
+  const policyLinks = [
+    { label: "Terms of Service", key: "terms" },
+    { label: "Privacy Policy",   key: "privacy" },
+    { label: "Refund Policy",    key: "refund" },
+  ];
+
   return (
     <footer style={{ backgroundColor: "#051F20", color: "#DAF1DE" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -269,21 +280,30 @@ export default function Footer() {
           }}
         >
           <p style={{ color: "#235347", fontSize: "0.75rem" }}>
-            © 2024 Celedon Elder Care Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} Celedon Elder Care Pvt. Ltd. All rights reserved.
           </p>
-          <div style={{ display: "flex", gap: "1.5rem" }}>
-            {["Terms of Service", "Privacy Policy", "Refund Policy"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                style={{ color: "#235347", fontSize: "0.75rem", textDecoration: "none" }}
+          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+            {policyLinks.map(({ label, key }) => (
+              <button
+                key={key}
+                onClick={() => setModal(key)}
+                style={{
+                  background: "none", border: "none", padding: 0, cursor: "pointer",
+                  color: "#235347", fontSize: "0.75rem",
+                  transition: "color 0.2s",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = "#8EB69B")}
+                onMouseOut={(e) => (e.currentTarget.style.color = "#235347")}
               >
-                {item}
-              </a>
+                {label}
+              </button>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Policy modals */}
+      {modal && <PolicyModal type={modal} onClose={() => setModal(null)} />}
     </footer>
   );
 }
