@@ -66,7 +66,7 @@ function HeroSection() {
           <div>
 
             {/* Headline */}
-            <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2.2rem,5vw,3.4rem)", fontWeight: "500", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
+            <h1 style={{ fontFamily: "var(--font-dancing)", color: "#ffffff", fontSize: "clamp(2.8rem,6vw,4.2rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "1.25rem", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
               Give Your Family{" "}
               <span style={{ color: "#C8A96A" }}>The Care</span>
               {" "}They Truly Deserve
