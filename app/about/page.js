@@ -43,8 +43,20 @@ function AboutHero() {
       <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", padding: "10rem 1.5rem 5rem", width: "100%" }}>
 
         <ScrollReveal animation="fadeUp" delay={120} duration={750}>
-          <h1 style={{ ...serif, color: "#ffffff", fontSize: "clamp(2rem,5vw,3.2rem)", fontWeight: "700", lineHeight: "1.2", maxWidth: "640px", marginBottom: "1.25rem", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
-            Who We Are,  {" "}
+          <h1
+            style={{
+              ...serif,
+              color: "#ffffff",
+              fontSize: "clamp(2rem,5vw,3.2rem)",
+              fontWeight: "700",
+              lineHeight: "1.2",
+              maxWidth: "640px",
+              marginBottom: "1.25rem",
+              textShadow: "0 2px 16px rgba(0,0,0,0.5)",
+            }}
+          >
+            Who We Are,
+            <br />
             <span style={{ color: C.terra }}>Why We Are</span>
           </h1>
         </ScrollReveal>
@@ -76,7 +88,7 @@ function OurStory() {
                   "With time, we heard another heartfelt concern from many homes new mothers returning after delivery, tired, anxious, and without the support they truly needed. Thats when we knew our care had to extend beyond elders, to mothers and newborns as well",
                   "Today, Celedon stands beside families during two of lifes most meaningful journeys helping our elders age with dignity, and supporting new parents with confidence and care. Because in Kerala, family means everything… and no one should ever feel alone in these moments"
                 ].map((p, i) => (
-                  <p key={i} style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>{p}</p>
+                  <p key={i} style={{ color: C[700], fontSize: "1rem", lineHeight: "1.8" }}>{p}</p>
                 ))}
               </div>
             </div>
@@ -258,10 +270,10 @@ function TodaySection() {
                 <span style={{ color: C[900] }}>Exciting.</span>
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                <p style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>
+                <p style={{ color: C[700], fontSize: "1rem", lineHeight: "1.8" }}>
                   Celedon is a young company with a big heart. We're currently serving families across India and growing every month. Every member we serve makes us sharper, more thoughtful, and more committed to our mission.
                 </p>
-                <p style={{ color: C[700], fontSize: "0.95rem", lineHeight: "1.8" }}>
+                <p style={{ color: C[700], fontSize: "1rem", lineHeight: "1.8" }}>
                   We don't have decades of history but we have something more important right now: <strong style={{ color: C[700] }}>full focus, genuine care, and the drive to get this right.</strong>
                 </p>
               </div>
@@ -325,7 +337,7 @@ function AboutCTA() {
               Explore Care Plans
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
-          
+
           </div>
         </ScrollReveal>
       </div>

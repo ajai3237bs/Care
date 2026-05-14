@@ -5,6 +5,8 @@ import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Button from "./ui/Button";
+import RegisterModal from './components/RegisterForm';
+import Image from 'next/image';
 
 // Icon Import //
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,8 +21,15 @@ import {
   faChildren
 }
   from "@fortawesome/free-solid-svg-icons";
-import RegisterModal from './components/RegisterForm';
-import Image from 'next/image';
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+
 
 
 
@@ -117,11 +126,11 @@ function AboutSection() {
             What is Celedon?
           </h2>
 
-          <p className="text-lg text-gray-700 font-medium mb-4">
+          <p className="text-xl text-gray-700 font-medium mb-4">
             Your extended family
           </p>
 
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <p className="text-gray-600 text-lg leading-relaxed mb-4">
             Celedon is a home based care platform that supports
             elderly parents and new mothers with reliable,
             compassionate, and verified assistance.
@@ -130,7 +139,7 @@ function AboutSection() {
             support.
           </p>
 
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="text-gray-600 text-lg leading-relaxed mb-6">
             To make home care trusted, accessible, and emotionally
             reassuring for every family.
           </p>
@@ -150,129 +159,102 @@ function AboutSection() {
 const trustPillars = [
   {
     label: "Home Care",
-    icon: (
-      <FontAwesomeIcon
-        icon={faHouseMedical}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    description:
+      "Personalized in home assistance including daily activities, hygiene support, and companionship for seniors.",
+    icon: faHouseMedical,
   },
   {
     label: "Medical Support",
-    icon: (
-      <FontAwesomeIcon
-        icon={faSuitcaseMedical}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    description:
+      "Professional nursing care, medication management, and health monitoring at home.",
+    icon: faSuitcaseMedical,
   },
   {
-    label: "PostPartum Care",
-    icon: (
-      <FontAwesomeIcon
-        icon={faPersonBreastfeeding}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    label: "Postpartum Care",
+    description:
+      "Complete support for new mothers and newborns including recovery, baby care, and emotional support.",
+    icon: faPersonBreastfeeding,
   },
   {
     label: "Wellness",
-    icon: (
-      <FontAwesomeIcon
-        icon={faHeartPulse}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    description:
+      "Holistic care including physiotherapy, mental wellness, and lifestyle support.",
+    icon: faHeartPulse,
   },
   {
     label: "Geriatric Experts",
-    icon: (
-      <FontAwesomeIcon
-        icon={faUserNurse}
-        style={{ color: "#6B8F71", fontSize: "28px" }}
-      />
-    ),
+    description:
+      "Specialized elderly care planning and consultation from experienced professionals.",
+    icon: faUserNurse,
   },
 ];
 
 
 function TrustBar() {
+  const [selected, setSelected] = useState(null);
+
   return (
-    <section
-      style={{
-        background: "linear-gradient(135deg, #f8f8f8 0%, #f3fffa 60%, #ffffff 100%)",
-        padding: "4.5rem 1.5rem",
-      }}
-    >
-      <div style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "center" }}>
-        <h2
-          style={{
-            ...serif,
-            color: "#0B2B26",
-            fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
-            fontWeight: "700",
-            marginBottom: "3rem",
-            lineHeight: "1.4",
-          }}
-        >
+    <section className="bg-gradient-to-br from-gray-50 via-green-50 to-white py-16 px-4">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0B2B26] mb-10 leading-relaxed">
           Expert Elder & Postpartum Care <br />
           Right at Your Doorstep
         </h2>
 
         {/* Cards */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "1.5rem",
-          }}
-        >
-          {trustPillars.map(({ label, icon }) => (
+        <div className="flex flex-wrap justify-center gap-6">
+          {trustPillars.map((item) => (
             <div
-              key={label}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "0.9rem",
-                backgroundColor: "#ffffff",
-                borderRadius: "20px",
-                padding: "1.75rem 2rem",
-                minWidth: "160px",
-                minHeight: "140px",
-                boxShadow: "0 4px 18px rgba(35,83,71,0.12)",
-                transition: "all 0.25s ease",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = "translateY(-6px)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "translateY(0)")
-              }
+              key={item.label}
+              onClick={() => setSelected(item)}
+              className="flex flex-col items-center gap-3 bg-white rounded-2xl px-6 py-6 min-w-[160px] shadow-md hover:shadow-lg hover:-translate-y-1 transition cursor-pointer"
             >
-              <div style={{ color: "#6B8F71" }}>{icon}</div>
+              <FontAwesomeIcon
+                icon={item.icon}
+                className="text-[#6B8F71] text-2xl"
+              />
 
-              <span
-                style={{
-                  color: "#163832",
-                  fontSize: "0.95rem",
-                  fontWeight: "600",
-                  textAlign: "center",
-                  lineHeight: "1.5",
-                }}
-              >
-                {label}
+              <span className="text-xl font-semibold text-[#163832] text-center">
+                {item.label}
               </span>
             </div>
           ))}
         </div>
       </div>
+
+      {/* 🔹 ShadCN Dialog */}
+      <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
+        {selected && (
+          <DialogContent className="sm:max-w-md rounded-2xl bg-white">
+            <DialogHeader className="items-center text-center">
+              <FontAwesomeIcon
+                icon={selected.icon}
+                className="text-[#6B8F71] text-3xl mb-2"
+              />
+
+              <DialogTitle className="text-2xl text-[#0B2B26]">
+                {selected.label}
+              </DialogTitle>
+
+              <DialogDescription className="text-lg text-gray-600 leading-relaxed mt-2">
+                {selected.description}
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => setSelected(null)}
+                className="px-5 py-2 rounded-lg bg-[#6B8F71] text-white text-sm hover:bg-[#5a7a63] transition"
+              >
+                Close
+              </button>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
     </section>
   );
 }
-
 
 //  SECTION 4 — CHALLENGES //
 
@@ -299,7 +281,7 @@ const challenges = [
   },
   {
     title: "Distance from Children",
-    desc: "Being away from your parents can create constant concern and uncertainty. Celedon helps you stay reassured with regular updates, easy communication, and round-the-clock caregiver support—so you always feel connected, no matter the distance.",
+    desc: "Being away from your parents can create constant concern and uncertainty. Celedon helps you stay reassured with regular updates, easy communication, and round the clock caregiver support so you always feel connected, no matter the distance.",
     icon: faChildren,
   },
 ];
@@ -478,7 +460,7 @@ function ChallengesSection() {
               <p
                 style={{
                   color: "#2F4F4F",
-                  fontSize: "0.95rem",
+                  fontSize: "1rem",
                   lineHeight: "1.75",
                 }}
               >
@@ -542,7 +524,7 @@ function WhyChooseSection() {
                   <div style={{ width: "24px", height: "24px", borderRadius: "50%", backgroundColor: "rgba(142,182,155,0.2)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "1px" }}>
                     <CheckIcon color="#8EB69B" />
                   </div>
-                  <span style={{ color: "#DAF1DE", fontSize: "0.9rem", lineHeight: "1.6" }}>{p}</span>
+                  <span style={{ color: "#DAF1DE", fontSize: "1.25rem", lineHeight: "1.6" }}>{p}</span>
                 </li>
               ))}
             </ul>
@@ -613,15 +595,15 @@ function WhyChooseSection() {
 const promises = [
   {
     title: "Treated Like Family, Not a Case",
-    desc: "Every senior or new mother we care for is a real person with a real story. Our caregivers are trained to listen, connect, and genuinely care — not just complete a checklist.",
+    desc: "Every senior or new mother we care for is a real person with a real story. Our caregivers are trained to listen, connect, and genuinely care not just complete a checklist.",
   },
   {
     title: "You're Never Left in the Dark",
-    desc: "Whether you're in the next room or in another country, we keep you updated. Real-time reports, family calls, and a direct line to your care team — always.",
+    desc: "Whether you are in the next room or in another country, we keep you updated. Real-time reports, family calls, and a direct line to your care team always.",
   },
   {
     title: "We Stand Behind Every Plan",
-    desc: "Not happy in the first 7 days? We'll make it right or refund you. No fine print. We'd rather earn your trust than hold onto your money.",
+    desc: "Not happy in the first 7 days? We will make it right or refund you. No fine print. We did rather earn your trust than hold onto your money.",
   },
 ];
 
@@ -640,7 +622,7 @@ function PromisesSection() {
             <div key={title} style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "2rem", boxShadow: "0 4px 20px rgba(22,56,50,0.07)", border: "1px solid rgba(142,182,155,0.2)", display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div style={{ fontSize: "2.25rem", lineHeight: 1 }}></div>
               <h3 style={{ ...serif, color: "#0B2B26", fontSize: "1.1rem", fontWeight: "700", lineHeight: 1.4 }}>{title}</h3>
-              <p style={{ color: "#235347", fontSize: "0.875rem", lineHeight: "1.8" }}>{desc}</p>
+              <p style={{ color: "#235347", fontSize: "1rem", lineHeight: "1.8" }}>{desc}</p>
             </div>
           ))}
         </div>
